@@ -32,7 +32,7 @@
             position: relative;
         }
         .tooltip {
-            display: none;
+            opacity: 0;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
@@ -44,9 +44,7 @@
             transform: translateX(-50%);
             white-space: nowrap;
             font-size: 0.8rem;
-        }
-        .countdown-container:hover .tooltip {
-            display: block;
+            transition: opacity 0.3s ease-in-out;
         }
         .container {
             display: flex;
@@ -116,9 +114,24 @@
         <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
     </div>
     <script>
+        window.onload = function() {
+            console.log("Script Loaded");
+            const countdownContainer = document.getElementById("countdown-container");
+            const tooltip = document.getElementById("tooltip");
+
+            countdownContainer.addEventListener("mouseenter", function() {
+                console.log("Hover detected");
+                tooltip.style.opacity = "1";
+            });
+
+            countdownContainer.addEventListener("mouseleave", function() {
+                tooltip.style.opacity = "0";
+            });
+        };
+
         function startCountdown() {
             const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 20); // Countdown for 20 days from now
+            targetDate.setDate(targetDate.getDate() + 20);
 
             function updateTimer() {
                 const now = new Date();
@@ -148,14 +161,6 @@
         }
 
         startCountdown();
-
-        document.getElementById("countdown-container").addEventListener("mouseenter", function() {
-            document.getElementById("tooltip").style.display = "block";
-        });
-
-        document.getElementById("countdown-container").addEventListener("mouseleave", function() {
-            document.getElementById("tooltip").style.display = "none";
-        });
     </script>
 </body>
 </html>
