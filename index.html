@@ -39,12 +39,12 @@
             font-size: 1.2rem;
         }
         .ufo {
-            position: fixed;
-            top: 50%;
+            position: absolute;
+            top: 100vh;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scale(0.5);
             width: 400px;
-            transition: all 2s ease-in-out;
+            transition: transform 1s ease-in-out, top 1s ease-in-out;
             z-index: 10;
         }
         .laser {
@@ -95,15 +95,15 @@
         window.addEventListener('scroll', function() {
             let scrollPos = window.scrollY;
             let ufo = document.getElementById('ufo');
-            let laser = document.getElementById('laser');
-            let button = document.getElementById('buy-button');
             let windowHeight = window.innerHeight;
             let documentHeight = document.body.scrollHeight;
-
             let scrollPercentage = scrollPos / (documentHeight - windowHeight);
-            let ufoPosition = 50 + scrollPercentage * 40; // Moves UFO from middle down
-
-            ufo.style.top = `${ufoPosition}%`;
+            
+            let newTop = 100 - (scrollPercentage * 80); // Moves UFO upwards
+            let newScale = 0.5 + (scrollPercentage * 0.5); // Grows UFO size gradually
+            
+            ufo.style.top = `${newTop}vh`;
+            ufo.style.transform = `translate(-50%, -50%) scale(${newScale})`;
         });
     </script>
 </body>
