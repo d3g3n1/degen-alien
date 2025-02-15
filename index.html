@@ -104,9 +104,18 @@
             align-items: center;
             gap: 10px;
         }
+        #sound-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <img src="assets/sound-on.png" id="sound-toggle" alt="Toggle Sound">
     <div class="countdown-container">
         <div class="predator-timer" id="predator-timer"></div>
         <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
@@ -145,6 +154,19 @@
         document.getElementById("buy-button").addEventListener("mouseenter", () => {
             hoverSound.currentTime = 0;
             hoverSound.play();
+        });
+        
+        const soundToggle = document.getElementById("sound-toggle");
+        let musicPlaying = true;
+        soundToggle.addEventListener("click", () => {
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                soundToggle.src = "assets/sound-off.png";
+            } else {
+                backgroundMusic.play();
+                soundToggle.src = "assets/sound-on.png";
+            }
+            musicPlaying = !musicPlaying;
         });
     </script>
 </body>
