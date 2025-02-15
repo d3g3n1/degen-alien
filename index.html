@@ -151,22 +151,12 @@
         function startCountdown() {
             const targetDate = new Date();
             targetDate.setDate(targetDate.getDate() + 20);
-
             function updateTimer() {
                 const now = new Date();
-                const timeDiff = targetDate - now;
-                
-                if (timeDiff <= 0) {
-                    document.getElementById("predator-timer").textContent = "-- -- --";
-                    document.getElementById("tooltip").textContent = "00:00:00 More to be revealed soon 🛸";
-                    return;
-                }
-
                 const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
                 const formattedTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`.split('').map(char => 
                     char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char
                 ).join('');
-                
                 document.getElementById("predator-timer").textContent = formattedTime;
             }
             setInterval(updateTimer, 1000);
