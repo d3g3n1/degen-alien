@@ -149,8 +149,8 @@
         backgroundMusic.volume = 0.5;
         
         // Auto-play music on page load
-        document.addEventListener("DOMContentLoaded", () => {
-            backgroundMusic.play();
+        window.addEventListener("load", () => {
+            backgroundMusic.play().catch(error => console.log("Autoplay blocked by browser"));
         });
         
         document.getElementById("buy-button").addEventListener("mouseenter", () => {
