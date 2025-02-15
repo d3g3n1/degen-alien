@@ -103,7 +103,7 @@
 </head>
 <body>
     <div class="countdown-container" id="countdown-container">
-        <div class="predator-timer" id="predator-timer"></div>
+        <div class="predator-timer" id="predator-timer">Loading...</div>
         <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
     </div>
     <div class="container">
@@ -118,6 +118,12 @@
             console.log("Script Loaded");
             const countdownContainer = document.getElementById("countdown-container");
             const tooltip = document.getElementById("tooltip");
+            const timer = document.getElementById("predator-timer");
+            
+            if (!countdownContainer || !tooltip || !timer) {
+                console.error("One or more elements are missing");
+                return;
+            }
 
             countdownContainer.addEventListener("mouseenter", function() {
                 console.log("Hover detected");
