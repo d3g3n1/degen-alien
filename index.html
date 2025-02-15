@@ -3,125 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Degen Alien Mini-Game</title>
+    <title>Degen Alien - Meme Coin</title>
+    <script type="module" src="assets/space-background.js"></script>
     <style>
         body {
             background-color: black;
+            color: #00ff00;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .countdown-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .predator-timer {
+            font-size: 2rem;
+            color: red;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+        }
+        .tooltip {
+            opacity: 0;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
-            font-family: Arial, sans-serif;
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8rem;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            z-index: 2;
+        }
+        .logo {
+            margin-top: 50px;
+            width: 200px;
+            height: auto;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0px 0px 10px #00ff00;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        .buy-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: black;
+            background-color: #00ff00;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px #00ff00;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            margin-top: 50px;
+        }
+        .buy-button:hover {
+            box-shadow: 0px 0px 30px #00ff00;
+            transform: scale(1.1);
         }
         canvas {
-            display: block;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
-        #score {
-            font-size: 20px;
-            margin: 10px;
+        .powered-by {
+            color: white;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Degen Alien Meteor Run</h1>
-    <p>Use Arrow Keys to move and dodge meteors! Collect SOL coins!</p>
-    <div id="score">Score: 0</div>
-    <canvas id="gameCanvas" width="400" height="500"></canvas>
-    
+    <div class="countdown-container" id="countdown-container">
+        <div class="predator-timer" id="predator-timer">Loading...</div>
+        <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
+    </div>
+    <div class="container">
+        <img src="assets/4IRfijR2_400x400.jpg" class="logo" alt="Degen Alien Logo">
+        <h1>Degen Alien</h1>
+        <p>The ultimate Degen from the depths of space.</p>
+        <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
+        <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
+    </div>
     <script>
-        const canvas = document.getElementById("gameCanvas");
-        const ctx = canvas.getContext("2d");
-        const alien = { x: 175, y: 400, width: 50, height: 50, dx: 0 };
-        const meteors = [];
-        const coins = [];
-        let score = 0;
-        let gameRunning = true;
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowLeft") alien.dx = -5;
-            if (e.key === "ArrowRight") alien.dx = 5;
-        });
-        document.addEventListener("keyup", () => alien.dx = 0);
-
-        function drawAlien() {
-            ctx.fillStyle = "lime";
-            ctx.fillRect(alien.x, alien.y, alien.width, alien.height);
-        }
-
-        function updateAlien() {
-            alien.x += alien.dx;
-            if (alien.x < 0) alien.x = 0;
-            if (alien.x + alien.width > canvas.width) alien.x = canvas.width - alien.width;
-        }
-
-        function createMeteor() {
-            if (Math.random() < 0.02) {
-                meteors.push({ x: Math.random() * 350, y: 0, size: 40, dy: 3 });
+        window.onload = function() {
+            console.log("Script Loaded");
+            const countdownContainer = document.getElementById("countdown-container");
+            const tooltip = document.getElementById("tooltip");
+            const timer = document.getElementById("predator-timer");
+            
+            if (!countdownContainer || !tooltip || !timer) {
+                console.error("One or more elements are missing");
+                return;
             }
-        }
 
-        function drawMeteors() {
-            ctx.fillStyle = "red";
-            meteors.forEach((meteor) => {
-                ctx.fillRect(meteor.x, meteor.y, meteor.size, meteor.size);
-                meteor.y += meteor.dy;
+            countdownContainer.addEventListener("mouseenter", function() {
+                console.log("Hover detected");
+                tooltip.style.opacity = "1";
             });
-        }
 
-        function checkCollisions() {
-            meteors.forEach((meteor) => {
-                if (
-                    alien.x < meteor.x + meteor.size &&
-                    alien.x + alien.width > meteor.x &&
-                    alien.y < meteor.y + meteor.size &&
-                    alien.y + alien.height > meteor.y
-                ) {
-                    gameRunning = false;
-                    alert("Game Over! Score: " + score);
-                    document.location.reload();
+            countdownContainer.addEventListener("mouseleave", function() {
+                tooltip.style.opacity = "0";
+            });
+        };
+
+        function startCountdown() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 20);
+
+            function updateTimer() {
+                const now = new Date();
+                const timeDiff = targetDate - now;
+
+                if (timeDiff <= 0) {
+                    document.getElementById("predator-timer").textContent = "-- -- --";
+                    document.getElementById("tooltip").textContent = "00:00:00 More to be revealed soon 🛸";
+                    return;
                 }
-            });
-        }
 
-        function createCoin() {
-            if (Math.random() < 0.01) {
-                coins.push({ x: Math.random() * 350, y: 0, size: 20, dy: 2 });
+                const days = String(Math.floor(timeDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                const hours = String(Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                const seconds = String(Math.floor((timeDiff % (1000 * 60)) / 1000)).padStart(2, '0');
+                
+                const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
+                const predatorCountdown = `${days}:${hours}:${minutes}:${seconds}`.split('').map(char => {
+                    return char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char;
+                }).join('');
+                
+                document.getElementById("predator-timer").textContent = predatorCountdown;
+                document.getElementById("tooltip").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s More to be revealed soon 🛸`;
             }
+
+            setInterval(updateTimer, 1000);
         }
 
-        function drawCoins() {
-            ctx.fillStyle = "yellow";
-            coins.forEach((coin, index) => {
-                ctx.fillRect(coin.x, coin.y, coin.size, coin.size);
-                coin.y += coin.dy;
-
-                if (
-                    alien.x < coin.x + coin.size &&
-                    alien.x + alien.width > coin.x &&
-                    alien.y < coin.y + coin.size &&
-                    alien.y + alien.height > coin.y
-                ) {
-                    coins.splice(index, 1);
-                    score += 10;
-                    document.getElementById("score").innerText = "Score: " + score;
-                }
-            });
-        }
-
-        function gameLoop() {
-            if (!gameRunning) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawAlien();
-            updateAlien();
-            createMeteor();
-            drawMeteors();
-            checkCollisions();
-            createCoin();
-            drawCoins();
-            requestAnimationFrame(gameLoop);
-        }
-
-        gameLoop();
+        startCountdown();
     </script>
 </body>
 </html>
