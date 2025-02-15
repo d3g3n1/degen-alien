@@ -163,18 +163,11 @@
                 }
 
                 const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
-                const formattedTime = new Intl.DateTimeFormat('en', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-                }).format(now);
-
-                const predatorCountdown = formattedTime.split('').map(char => 
+                const formattedTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`.split('').map(char => 
                     char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char
                 ).join('');
-
-                document.getElementById("predator-timer").textContent = predatorCountdown;
+                
+                document.getElementById("predator-timer").textContent = formattedTime;
             }
             setInterval(updateTimer, 1000);
         }
@@ -183,6 +176,7 @@
         const hoverSound = new Audio("assets/beep-boop.mp3");
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
+        backgroundMusic.play();
 
         document.getElementById("buy-button").addEventListener("mouseenter", () => {
             hoverSound.currentTime = 0;
@@ -190,7 +184,7 @@
         });
 
         const soundToggle = document.getElementById("sound-toggle");
-        let musicPlaying = false;
+        let musicPlaying = true;
 
         soundToggle.addEventListener("click", () => {
             if (musicPlaying) {
