@@ -14,6 +14,22 @@
             margin: 0;
             overflow-x: hidden;
         }
+        .countdown-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            text-align: center;
+        }
+        .predator-timer {
+            font-size: 2rem;
+            color: red;
+            font-family: 'Orbitron', sans-serif; /* A digital-looking font */
+        }
+        .regular-timer {
+            font-size: 1.5rem;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
         .container {
             display: flex;
             flex-direction: column;
@@ -70,12 +86,45 @@
     </style>
 </head>
 <body>
+    <div class="countdown-container">
+        <div class="predator-timer" id="predator-timer">00:00:00</div>
+        <div class="regular-timer" id="regular-timer">00:00:00</div>
+    </div>
     <div class="container">
         <img src="assets/4IRfijR2_400x400.jpg" class="logo" alt="Degen Alien Logo">
         <h1>Degen Alien</h1>
         <p>The ultimate Degen from the depths of space.</p>
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
-        <a href="#" class="buy-button" id="buy-button">BUY $DGA</a>
+        <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
     </div>
+    <script>
+        function startCountdown() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 20); // Countdown for 20 days from now
+
+            function updateTimer() {
+                const now = new Date();
+                const timeDiff = targetDate - now;
+
+                if (timeDiff <= 0) {
+                    document.getElementById("predator-timer").textContent = "00:00:00";
+                    document.getElementById("regular-timer").textContent = "00:00:00";
+                    return;
+                }
+
+                const days = String(Math.floor(timeDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                const hours = String(Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                const seconds = String(Math.floor((timeDiff % (1000 * 60)) / 1000)).padStart(2, '0');
+                
+                document.getElementById("regular-timer").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                document.getElementById("predator-timer").textContent = `${days}:${hours}:${minutes}:${seconds}`.replace(/[0-9]/g, match => '₀₁₂₃₄₅₆₇₈₉'[match]);
+            }
+
+            setInterval(updateTimer, 1000);
+        }
+
+        startCountdown();
+    </script>
 </body>
 </html>
