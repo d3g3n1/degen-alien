@@ -21,21 +21,32 @@
             text-align: center;
         }
         .predator-timer {
-            font-size: 4rem;
+            font-size: 2rem; /* Reduced size by 50% */
             color: red;
-            font-family: 'Orbitron', sans-serif; /* A digital-looking font */
+            font-family: 'Orbitron', sans-serif;
             letter-spacing: 8px;
             display: flex;
             justify-content: center;
             gap: 10px;
+            position: relative;
+            cursor: pointer;
         }
-        .regular-timer {
-            font-size: 0.8rem;
+        .tooltip {
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: -10px;
-            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8rem;
+        }
+        .predator-timer:hover .tooltip {
+            visibility: visible;
         }
         .container {
             display: flex;
@@ -94,8 +105,10 @@
 </head>
 <body>
     <div class="countdown-container">
-        <div class="predator-timer" id="predator-timer"></div>
-        <div class="regular-timer" id="regular-timer"></div>
+        <div class="predator-timer" id="predator-timer">
+            <span id="predator-text"></span>
+            <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
+        </div>
     </div>
     <div class="container">
         <img src="assets/4IRfijR2_400x400.jpg" class="logo" alt="Degen Alien Logo">
@@ -114,8 +127,8 @@
                 const timeDiff = targetDate - now;
 
                 if (timeDiff <= 0) {
-                    document.getElementById("predator-timer").textContent = "-- -- --";
-                    document.getElementById("regular-timer").textContent = "00:00:00";
+                    document.getElementById("predator-text").textContent = "-- -- --";
+                    document.getElementById("tooltip").textContent = "00:00:00 More to be revealed soon 🛸";
                     return;
                 }
 
@@ -129,8 +142,8 @@
                     return char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char;
                 }).join('');
                 
-                document.getElementById("regular-timer").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-                document.getElementById("predator-timer").textContent = predatorCountdown;
+                document.getElementById("predator-text").textContent = predatorCountdown;
+                document.getElementById("tooltip").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s More to be revealed soon 🛸`;
             }
 
             setInterval(updateTimer, 1000);
