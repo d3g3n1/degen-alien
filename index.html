@@ -104,19 +104,21 @@
             align-items: center;
             gap: 10px;
         }
-        #discord-container {
+        /* Discord + Sound Controls */
+        #controls-container {
             position: absolute;
             top: 20px;
             right: 20px;
             text-align: center;
         }
-        #discord-logo {
+        .control-icon {
             width: 40px;
             height: 40px;
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
+            margin-bottom: 5px;
         }
-        #discord-logo:hover {
+        .control-icon:hover {
             transform: scale(1.1);
         }
         #stay-tuned-text {
@@ -124,35 +126,15 @@
             color: white;
             margin-top: 5px;
         }
-        /* Background music toggle */
-        #music-toggle-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-        }
-        #music-toggle {
-            background: #00ff00;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: 0.3s ease;
-        }
-        #music-toggle:hover {
-            background: #00cc00;
-            box-shadow: 0px 0px 10px #00ff00;
-        }
     </style>
 </head>
 <body>
-    <div id="discord-container">
+    <div id="controls-container">
         <a href="https://discord.com/" target="_blank">
-            <img src="assets/discord.png" alt="Discord" id="discord-logo">
+            <img src="assets/discord.png" alt="Discord" class="control-icon">
         </a>
         <p id="stay-tuned-text">Stay Tuned</p>
+        <img src="assets/sound-on.png" alt="Sound Toggle" class="control-icon" id="sound-toggle">
     </div>
     <div class="countdown-container">
         <div class="predator-timer" id="predator-timer"></div>
@@ -165,10 +147,39 @@
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
         <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
     </div>
-    <div id="music-toggle-container">
-        <button id="music-toggle">🔊 Play Music</button>
-    </div>
     <script>
+        function startCountdown() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 20);
+
+            function updateTimer() {
+                const now = new Date();
+                const timeDiff = targetDate - now;
+                
+                if (timeDiff <= 0) {
+                    document.getElementById("predator-timer").textContent = "-- -- --";
+                    document.getElementById("tooltip").textContent = "00:00:00 More to be revealed soon 🛸";
+                    return;
+                }
+
+                const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
+                const formattedTime = new Intl.DateTimeFormat('en', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                }).format(now);
+
+                const predatorCountdown = formattedTime.split('').map(char => 
+                    char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char
+                ).join('');
+
+                document.getElementById("predator-timer").textContent = predatorCountdown;
+            }
+            setInterval(updateTimer, 1000);
+        }
+        startCountdown();
+
         const hoverSound = new Audio("assets/beep-boop.mp3");
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
@@ -178,16 +189,16 @@
             hoverSound.play();
         });
 
-        const musicToggle = document.getElementById("music-toggle");
+        const soundToggle = document.getElementById("sound-toggle");
         let musicPlaying = false;
 
-        musicToggle.addEventListener("click", () => {
+        soundToggle.addEventListener("click", () => {
             if (musicPlaying) {
                 backgroundMusic.pause();
-                musicToggle.textContent = "🔊 Play Music";
+                soundToggle.src = "assets/sound-off.png";
             } else {
                 backgroundMusic.play();
-                musicToggle.textContent = "🔇 Stop Music";
+                soundToggle.src = "assets/sound-on.png";
             }
             musicPlaying = !musicPlaying;
         });
