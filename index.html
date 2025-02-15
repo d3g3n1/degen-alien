@@ -39,7 +39,7 @@
             padding: 10px;
             border-radius: 5px;
             position: absolute;
-            top: 50px;
+            top: 40px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
@@ -148,6 +148,14 @@
         }
 
         startCountdown();
+
+        document.getElementById("countdown-container").addEventListener("mouseenter", function() {
+            document.getElementById("tooltip").style.display = "block";
+        });
+
+        document.getElementById("countdown-container").addEventListener("mouseleave", function() {
+            document.getElementById("tooltip").style.display = "none";
+        });
     </script>
 </body>
 </html>
