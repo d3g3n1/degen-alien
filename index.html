@@ -124,6 +124,27 @@
             color: white;
             margin-top: 5px;
         }
+        /* Background music toggle */
+        #music-toggle-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        #music-toggle {
+            background: #00ff00;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
+        #music-toggle:hover {
+            background: #00cc00;
+            box-shadow: 0px 0px 10px #00ff00;
+        }
     </style>
 </head>
 <body>
@@ -144,38 +165,32 @@
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
         <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
     </div>
+    <div id="music-toggle-container">
+        <button id="music-toggle">🔊 Play Music</button>
+    </div>
     <script>
-        function startCountdown() {
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 20);
+        const hoverSound = new Audio("assets/beep-boop.mp3");
+        const backgroundMusic = new Audio("assets/lofi-space.mp3");
+        backgroundMusic.loop = true;
 
-            function updateTimer() {
-                const now = new Date();
-                const timeDiff = targetDate - now;
-                
-                if (timeDiff <= 0) {
-                    document.getElementById("predator-timer").textContent = "-- -- --";
-                    document.getElementById("tooltip").textContent = "00:00:00 More to be revealed soon 🛸";
-                    return;
-                }
+        document.getElementById("buy-button").addEventListener("mouseenter", () => {
+            hoverSound.currentTime = 0;
+            hoverSound.play();
+        });
 
-                const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
-                const formattedTime = new Intl.DateTimeFormat('en', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-                }).format(now);
+        const musicToggle = document.getElementById("music-toggle");
+        let musicPlaying = false;
 
-                const predatorCountdown = formattedTime.split('').map(char => 
-                    char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char
-                ).join('');
-
-                document.getElementById("predator-timer").textContent = predatorCountdown;
+        musicToggle.addEventListener("click", () => {
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = "🔊 Play Music";
+            } else {
+                backgroundMusic.play();
+                musicToggle.textContent = "🔇 Stop Music";
             }
-            setInterval(updateTimer, 1000);
-        }
-        startCountdown();
+            musicPlaying = !musicPlaying;
+        });
     </script>
 </body>
 </html>
