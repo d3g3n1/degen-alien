@@ -176,8 +176,11 @@
         const hoverSound = new Audio("assets/beep-boop.mp3");
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
-        backgroundMusic.play();
-
+        
+        document.addEventListener("click", () => {
+            backgroundMusic.play();
+        }, { once: true });
+        
         document.getElementById("buy-button").addEventListener("mouseenter", () => {
             hoverSound.currentTime = 0;
             hoverSound.play();
