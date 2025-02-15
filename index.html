@@ -21,12 +21,13 @@
             text-align: center;
         }
         .predator-timer {
-            font-size: 2rem;
+            font-size: 3rem;
             color: red;
             font-family: 'Orbitron', sans-serif; /* A digital-looking font */
+            letter-spacing: 5px;
         }
         .regular-timer {
-            font-size: 1.5rem;
+            font-size: 1rem;
             color: white;
             font-family: Arial, sans-serif;
         }
@@ -87,7 +88,7 @@
 </head>
 <body>
     <div class="countdown-container">
-        <div class="predator-timer" id="predator-timer">00:00:00</div>
+        <div class="predator-timer" id="predator-timer">....</div>
         <div class="regular-timer" id="regular-timer">00:00:00</div>
     </div>
     <div class="container">
@@ -107,7 +108,7 @@
                 const timeDiff = targetDate - now;
 
                 if (timeDiff <= 0) {
-                    document.getElementById("predator-timer").textContent = "00:00:00";
+                    document.getElementById("predator-timer").textContent = "....";
                     document.getElementById("regular-timer").textContent = "00:00:00";
                     return;
                 }
@@ -118,7 +119,7 @@
                 const seconds = String(Math.floor((timeDiff % (1000 * 60)) / 1000)).padStart(2, '0');
                 
                 document.getElementById("regular-timer").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-                document.getElementById("predator-timer").textContent = `${days}:${hours}:${minutes}:${seconds}`.replace(/[0-9]/g, match => '₀₁₂₃₄₅₆₇₈₉'[match]);
+                document.getElementById("predator-timer").textContent = "...."; // Keeping alien symbols only
             }
 
             setInterval(updateTimer, 1000);
