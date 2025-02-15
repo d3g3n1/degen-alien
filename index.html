@@ -148,34 +148,22 @@
         <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
     </div>
     <script>
-        function startCountdown() {
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 20);
-            function updateTimer() {
-                const now = new Date();
-                const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
-                const formattedTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`.split('').map(char => 
-                    char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char
-                ).join('');
-                document.getElementById("predator-timer").textContent = formattedTime;
-            }
-            setInterval(updateTimer, 1000);
-        }
-        startCountdown();
-
         const hoverSound = new Audio("assets/beep-boop.mp3");
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
+        backgroundMusic.volume = 0.5;
         
         document.addEventListener("click", () => {
-            backgroundMusic.play();
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+            }
         }, { once: true });
         
         document.getElementById("buy-button").addEventListener("mouseenter", () => {
             hoverSound.currentTime = 0;
             hoverSound.play();
         });
-
+        
         const soundToggle = document.getElementById("sound-toggle");
         let musicPlaying = true;
 
