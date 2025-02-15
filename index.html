@@ -32,24 +32,21 @@
             position: relative;
         }
         .tooltip {
-            visibility: hidden;
+            display: none;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
             padding: 10px;
             border-radius: 5px;
             position: absolute;
-            top: 40px;
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
         }
         .countdown-container:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+            display: block;
         }
         .container {
             display: flex;
@@ -107,7 +104,7 @@
     </style>
 </head>
 <body>
-    <div class="countdown-container">
+    <div class="countdown-container" id="countdown-container">
         <div class="predator-timer" id="predator-timer"></div>
         <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
     </div>
