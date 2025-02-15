@@ -19,9 +19,10 @@
             top: 20px;
             left: 20px;
             text-align: center;
+            cursor: pointer;
         }
         .predator-timer {
-            font-size: 2rem; /* Reduced size by 50% */
+            font-size: 2rem;
             color: red;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 8px;
@@ -29,7 +30,6 @@
             justify-content: center;
             gap: 10px;
             position: relative;
-            cursor: pointer;
         }
         .tooltip {
             visibility: hidden;
@@ -39,7 +39,7 @@
             padding: 10px;
             border-radius: 5px;
             position: absolute;
-            top: 50px;
+            top: 40px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
@@ -47,7 +47,7 @@
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
         }
-        .predator-timer:hover + .tooltip {
+        .countdown-container:hover .tooltip {
             visibility: visible;
             opacity: 1;
         }
