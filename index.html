@@ -104,38 +104,9 @@
             align-items: center;
             gap: 10px;
         }
-        /* Discord + Sound Controls */
-        #controls-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            text-align: center;
-        }
-        .control-icon {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-            margin-bottom: 5px;
-        }
-        .control-icon:hover {
-            transform: scale(1.1);
-        }
-        #stay-tuned-text {
-            font-size: 12px;
-            color: white;
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
-    <div id="controls-container">
-        <a href="https://discord.com/" target="_blank">
-            <img src="assets/discord.png" alt="Discord" class="control-icon">
-        </a>
-        <p id="stay-tuned-text">Stay Tuned</p>
-        <img src="assets/sound-on.png" alt="Sound Toggle" class="control-icon" id="sound-toggle">
-    </div>
     <div class="countdown-container">
         <div class="predator-timer" id="predator-timer"></div>
         <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
@@ -148,34 +119,32 @@
         <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
     </div>
     <script>
+        function startCountdown() {
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 20);
+            function updateTimer() {
+                const now = new Date();
+                const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
+                const formattedTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`.split('').map(char => 
+                    char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char
+                ).join('');
+                document.getElementById("predator-timer").textContent = formattedTime;
+            }
+            setInterval(updateTimer, 1000);
+        }
+        startCountdown();
+
         const hoverSound = new Audio("assets/beep-boop.mp3");
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
-        backgroundMusic.volume = 0.5;
         
         document.addEventListener("click", () => {
-            if (backgroundMusic.paused) {
-                backgroundMusic.play();
-            }
+            backgroundMusic.play();
         }, { once: true });
         
         document.getElementById("buy-button").addEventListener("mouseenter", () => {
             hoverSound.currentTime = 0;
             hoverSound.play();
-        });
-        
-        const soundToggle = document.getElementById("sound-toggle");
-        let musicPlaying = true;
-
-        soundToggle.addEventListener("click", () => {
-            if (musicPlaying) {
-                backgroundMusic.pause();
-                soundToggle.src = "assets/sound-off.png";
-            } else {
-                backgroundMusic.play();
-                soundToggle.src = "assets/sound-on.png";
-            }
-            musicPlaying = !musicPlaying;
         });
     </script>
 </body>
