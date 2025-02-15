@@ -39,14 +39,17 @@
             padding: 10px;
             border-radius: 5px;
             position: absolute;
-            top: 100%;
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
-        .predator-timer:hover .tooltip {
+        .predator-timer:hover + .tooltip {
             visibility: visible;
+            opacity: 1;
         }
         .container {
             display: flex;
@@ -105,10 +108,8 @@
 </head>
 <body>
     <div class="countdown-container">
-        <div class="predator-timer" id="predator-timer">
-            <span id="predator-text"></span>
-            <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
-        </div>
+        <div class="predator-timer" id="predator-timer"></div>
+        <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
     </div>
     <div class="container">
         <img src="assets/4IRfijR2_400x400.jpg" class="logo" alt="Degen Alien Logo">
@@ -127,7 +128,7 @@
                 const timeDiff = targetDate - now;
 
                 if (timeDiff <= 0) {
-                    document.getElementById("predator-text").textContent = "-- -- --";
+                    document.getElementById("predator-timer").textContent = "-- -- --";
                     document.getElementById("tooltip").textContent = "00:00:00 More to be revealed soon 🛸";
                     return;
                 }
@@ -142,7 +143,7 @@
                     return char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char;
                 }).join('');
                 
-                document.getElementById("predator-text").textContent = predatorCountdown;
+                document.getElementById("predator-timer").textContent = predatorCountdown;
                 document.getElementById("tooltip").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s More to be revealed soon 🛸`;
             }
 
