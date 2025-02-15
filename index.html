@@ -147,11 +147,11 @@
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
         backgroundMusic.volume = 0.5;
-        
-        // Auto-play music on page load
-        window.addEventListener("load", () => {
-            backgroundMusic.play().catch(error => console.log("Autoplay blocked by browser"));
-        });
+
+        // Ensure autoplay works by allowing interaction
+        document.addEventListener("click", () => {
+            backgroundMusic.play().catch(error => console.log("Autoplay blocked, user interaction needed"));
+        }, { once: true });
         
         document.getElementById("buy-button").addEventListener("mouseenter", () => {
             hoverSound.currentTime = 0;
