@@ -7,15 +7,24 @@
     <style>
         body {
             background-color: black;
-            color: neon green;
+            color: #00ff00;
             font-family: Arial, sans-serif;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            overflow-x: hidden;
+        }
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: url('https://source.unsplash.com/1920x1080/?stars,space') repeat;
+            background-size: cover;
+            z-index: -1;
+        }
+        .logo {
+            margin-top: 50px;
+            width: 200px;
+            height: auto;
         }
         h1 {
             font-size: 3rem;
@@ -23,6 +32,25 @@
         }
         p {
             font-size: 1.2rem;
+        }
+        .ufo {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            transition: all 2s ease-in-out;
+        }
+        .laser {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            width: 4px;
+            height: 0;
+            background: #00ff00;
+            box-shadow: 0px 0px 10px #00ff00;
+            transform: translateX(-50%);
+            transition: height 1s ease-in-out;
         }
         .buy-button {
             display: inline-block;
@@ -34,16 +62,44 @@
             border-radius: 10px;
             box-shadow: 0px 0px 15px #00ff00;
             transition: all 0.3s ease-in-out;
+            position: relative;
+            margin-top: 300px;
         }
         .buy-button:hover {
             box-shadow: 0px 0px 30px #00ff00;
             transform: scale(1.1);
         }
+        .scroll-container {
+            height: 150vh;
+        }
     </style>
 </head>
 <body>
+    <div class="stars"></div>
+    <img src="assets/4IRfijR2_400x400.jpg" class="logo" alt="Degen Alien Logo">
     <h1>Degen Alien</h1>
     <p>The ultimate meme coin from the depths of space.</p>
-    <a href="#" class="buy-button">BUY NOW</a>
+    
+    <div class="scroll-container"></div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Alien_UFO.svg/512px-Alien_UFO.svg.png" class="ufo" id="ufo" alt="UFO">
+    <div class="laser" id="laser"></div>
+    <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            let scrollPos = window.scrollY;
+            let ufo = document.getElementById('ufo');
+            let laser = document.getElementById('laser');
+            let button = document.getElementById('buy-button');
+            
+            if (scrollPos > 200) {
+                ufo.style.top = '250px';
+                laser.style.height = '250px';
+            } else {
+                ufo.style.top = '-100px';
+                laser.style.height = '0';
+            }
+        });
+    </script>
 </body>
 </html>
