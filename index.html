@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Degen Alien - Meme Coin</title>
     <script type="module" src="assets/space-background.js"></script>
+    <link rel="stylesheet" href="assets/styles.css">
     <style>
         body {
             background-color: black;
@@ -14,51 +15,18 @@
             margin: 0;
             overflow-x: hidden;
         }
-        .countdown-container {
+        .stars {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .predator-timer {
-            font-size: 2rem;
-            color: red;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 8px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            position: relative;
-        }
-        .tooltip {
-            visibility: hidden;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .countdown-container:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
             height: 100vh;
-            position: relative;
-            z-index: 2;
+            background: url('https://source.unsplash.com/1920x1080/?stars,galaxy,space') repeat;
+            background-size: cover;
+            z-index: -1;
+            animation: moveStars 60s linear infinite;
+        }
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
         }
         .logo {
             margin-top: 50px;
@@ -89,68 +57,23 @@
             box-shadow: 0px 0px 30px #00ff00;
             transform: scale(1.1);
         }
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        .powered-by {
-            color: white;
-            font-size: 1rem;
+        .container {
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 10px;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <div class="countdown-container">
-        <div class="predator-timer" id="predator-timer"></div>
-        <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
-    </div>
+    <div class="stars"></div>
     <div class="container">
         <img src="assets/4IRfijR2_400x400.jpg" class="logo" alt="Degen Alien Logo">
         <h1>Degen Alien</h1>
         <p>The ultimate Degen from the depths of space.</p>
-        <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
+        <p>Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
         <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
     </div>
-    <script>
-        function startCountdown() {
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 20); // Countdown for 20 days from now
-
-            function updateTimer() {
-                const now = new Date();
-                const timeDiff = targetDate - now;
-
-                if (timeDiff <= 0) {
-                    document.getElementById("predator-timer").textContent = "-- -- --";
-                    document.getElementById("tooltip").textContent = "00:00:00 More to be revealed soon 🛸";
-                    return;
-                }
-
-                const days = String(Math.floor(timeDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                const hours = String(Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                const minutes = String(Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                const seconds = String(Math.floor((timeDiff % (1000 * 60)) / 1000)).padStart(2, '0');
-                
-                const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
-                const predatorCountdown = `${days}:${hours}:${minutes}:${seconds}`.split('').map(char => {
-                    return char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char;
-                }).join('');
-                
-                document.getElementById("predator-timer").textContent = predatorCountdown;
-                document.getElementById("tooltip").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s More to be revealed soon 🛸`;
-            }
-
-            setInterval(updateTimer, 1000);
-        }
-
-        startCountdown();
-    </script>
 </body>
 </html>
