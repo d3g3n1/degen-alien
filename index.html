@@ -21,47 +21,58 @@
             overflow-x: hidden;
         }
 
-        .countdown-container {
-            position: fixed;
+        /* Navigation Bar */
+        .navbar {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Socials & Contract */
+        .socials-container {
+            position: absolute;
             top: 20px;
             left: 20px;
-            text-align: center;
+            text-align: left;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
             cursor: pointer;
         }
 
-        .predator-timer {
-            font-size: 2rem;
-            color: red;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 8px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            position: relative;
-        }
-
-        .tooltip {
-            visibility: hidden;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
+        .contract-box {
+            background: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 5px;
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            color: white;
+            font-size: 14px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: all;
         }
 
-        .countdown-container:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+        .contract-box img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
         }
 
+        /* Centered Content */
         .container {
             display: flex;
             flex-direction: column;
@@ -72,48 +83,12 @@
             z-index: 2;
         }
 
-        .logo {
-            margin-top: 50px;
-            width: 200px;
-            height: auto;
-        }
-
         h1 {
             font-family: 'SuperTheory', sans-serif;
-            font-size: 3rem;
+            font-size: 4rem;
+            color: #00ff00;
             text-shadow: 0px 0px 10px #00ff00;
-        }
-
-        p {
-            font-size: 1.2rem;
-        }
-
-        .buy-button {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            color: black;
-            background-color: #00ff00;
-            text-decoration: none;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px #00ff00;
-            transition: all 0.3s ease-in-out;
-            position: relative;
-            margin-top: 50px;
-        }
-
-        .buy-button:hover {
-            box-shadow: 0px 0px 30px #00ff00;
-            transform: scale(1.1);
-        }
-
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+            margin-bottom: 10px;
         }
 
         .powered-by {
@@ -124,6 +99,13 @@
             gap: 10px;
         }
 
+        .alien-gif {
+            width: 250px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        /* Sound Toggle */
         #sound-toggle {
             position: fixed;
             top: 70px;
@@ -133,88 +115,57 @@
             cursor: pointer;
         }
 
-        #discord-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            text-align: center;
-        }
-
-        #discord-logo {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        #discord-logo:hover {
-            transform: scale(1.1);
-        }
-
-        #stay-tuned-text {
-            font-size: 12px;
-            color: white;
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
-    <div id="discord-container">
-        <a href="https://discord.com/" target="_blank">
-            <img src="assets/discord.png" alt="Discord" id="discord-logo">
-        </a>
-        <p id="stay-tuned-text">Stay Tuned</p>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#">Buy $DGA</a>
+        <a href="#">DGAliens NFTs (coming soon)</a>
+        <a href="#">Degen Run Game (coming soon)</a>
+        <a href="#">FAQ</a>
     </div>
 
+    <!-- Social Links & Contract -->
+    <div class="socials-container">
+        <img src="assets/telegram-logo.png" alt="Telegram" class="social-icon">
+        <img src="assets/twitter-x-logo.png" alt="Twitter X" class="social-icon">
+        
+        <div class="contract-box" id="contract-copy">
+            Official Contract Address: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
+            <img src="assets/copy.png" alt="Copy" id="copy-icon">
+        </div>
+    </div>
+
+    <!-- Sound Toggle -->
     <img src="assets/sound-on.png" id="sound-toggle" alt="Toggle Sound">
 
-    <div class="countdown-container">
-        <div class="predator-timer" id="predator-timer"></div>
-        <div class="tooltip" id="tooltip">More to be revealed soon 🛸</div>
-    </div>
-
+    <!-- Main Content -->
     <div class="container">
-        <img src="assets/4IRfijR2_400x400.jpg" class="logo" alt="Degen Alien Logo">
-        <h1>Degen Alien</h1>
-        <p>Contact Has Been Made. Are You Ready?</p>
+        <h1>DEGEN ALIEN</h1>
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
-        <a href="#" class="buy-button" id="buy-button">BUY NOW</a>
+        <img src="assets/degen.gif" class="alien-gif" alt="Degen Alien">
     </div>
 
     <script>
-        function startCountdown() {
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 20);
-            function updateTimer() {
-                const now = new Date();
-                const alienNumerals = ['ᛁ', 'ᛂ', 'ᛃ', 'ᛄ', 'ᛅ', 'ᛆ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ'];
-                const formattedTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`.split('').map(char => 
-                    char.match(/[0-9]/) ? alienNumerals[parseInt(char)] : char
-                ).join('');
-                document.getElementById("predator-timer").textContent = formattedTime;
-            }
-            setInterval(updateTimer, 1000);
-        }
-        startCountdown();
+        // Copy Contract Address Functionality
+        document.getElementById("contract-copy").addEventListener("click", function () {
+            const contractAddress = "0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4";
+            navigator.clipboard.writeText(contractAddress).then(() => {
+                alert("Contract address copied!");
+            });
+        });
 
-        const hoverSound = new Audio("assets/beep-boop.mp3");
+        // Background Music
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
         backgroundMusic.volume = 0.5;
+        backgroundMusic.play().catch(error => console.log("Autoplay blocked, user interaction needed"));
 
-        // Autoplay music on page load
-        document.addEventListener("DOMContentLoaded", () => {
-            backgroundMusic.play().catch(error => console.log("Autoplay blocked, user interaction needed"));
-        });
-
-        document.getElementById("buy-button").addEventListener("mouseenter", () => {
-            hoverSound.currentTime = 0;
-            hoverSound.play();
-        });
-
+        // Sound Toggle
         const soundToggle = document.getElementById("sound-toggle");
         let musicPlaying = true;
-
         soundToggle.addEventListener("click", () => {
             if (musicPlaying) {
                 backgroundMusic.pause();
@@ -226,5 +177,6 @@
             musicPlaying = !musicPlaying;
         });
     </script>
+
 </body>
 </html>
