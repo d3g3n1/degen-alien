@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Degen Alien</title>
     <script type="module" src="assets/space-background.js"></script>
-
+    
     <style>
         @font-face {
             font-family: 'SuperTheory';
@@ -27,28 +27,62 @@
             justify-content: center;
             align-items: center;
             gap: 40px;
-            padding: 20px;
+            padding: 15px;
             font-size: 18px;
+            flex-wrap: wrap;
         }
         .nav a {
             text-decoration: none;
             color: white;
             font-weight: bold;
-            transition: 0.3s;
-            padding: 5px 15px;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* NEON GREEN GLOW ON HOVER */
+        .nav a:hover {
+            color: #00ff00;
+            text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+        }
+
+        /* OFFICIAL LINKS */
+        .social-links {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .social-links p {
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+            margin: 0;
+        }
+        .social-icons {
+            display: flex;
+            gap: 8px;
+        }
+        .social-icons a {
             display: inline-block;
         }
-        .nav a:hover {
-            text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+        .social-icons img {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .social-icons a:hover img {
+            transform: scale(1.1);
         }
 
         /* TITLE */
         h1 {
             font-family: 'SuperTheory', sans-serif;
-            font-size: 6rem;
+            font-size: 5rem;
             text-shadow: 0px 0px 15px #00ff00, 0px 0px 30px #00ff00;
             animation: glow 1.5s infinite alternate;
-            margin-top: 50px;
+            margin-top: 30px;
         }
 
         @keyframes glow {
@@ -72,55 +106,27 @@
         }
 
         .gif-container {
-            width: 70%;
-            max-width: 700px;
+            width: 80%;
+            max-width: 750px;
         }
 
+        /* POWERED BY */
         .powered-by {
-            margin-top: -30px;
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        /* SOCIAL LINKS */
-        .social-links {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .social-links p {
+            margin-top: -10px;
             font-size: 16px;
-            font-weight: bold;
             color: white;
-            margin: 0;
         }
-        .social-icons {
-            display: flex;
-            gap: 10px;
-        }
-        .social-icons a {
-            display: inline-block;
-            cursor: pointer;
-            z-index: 10; /* Ensures it's clickable */
-        }
-        .social-icons img {
-            width: 45px;
-            height: 45px;
-            transition: transform 0.3s ease;
-        }
-        .social-icons a:hover img {
-            transform: scale(1.1);
+        .powered-by img {
+            width: 90px;
+            vertical-align: middle;
         }
 
         /* CONTRACT ADDRESS */
         .contract-container {
-            position: fixed;
+            position: absolute;
             bottom: 20px;
             right: 20px;
-            text-align: right;
+            text-align: left;
         }
         .contract-container p {
             font-size: 14px;
@@ -136,94 +142,104 @@
             padding: 8px 15px;
             border-radius: 8px;
             border: 1px solid white;
+            min-width: 350px;
             cursor: text;
-            user-select: text; /* Allows manual selection */
+            white-space: nowrap;
         }
-        .contract-box img {
-            margin-left: 10px;
+        .contract-text {
+            font-size: 16px;
+            color: white;
+            flex-grow: 1;
+            user-select: text;
+            cursor: text;
+            text-align: left;
+            overflow-x: auto;
+        }
+        .copy-icon {
             width: 18px;
             height: 18px;
             cursor: pointer;
         }
 
-        /* BACKGROUND EFFECTS */
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+        /* FIX: Make the text selectable */
+        .contract-box span {
+            user-select: all;
         }
 
         /* MOBILE RESPONSIVENESS */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             h1 {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
             .nav {
-                flex-wrap: wrap;
-                gap: 20px;
-                font-size: 14px;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
             }
             .gif-container {
                 width: 90%;
+                max-width: 500px;
+            }
+            .powered-by {
+                font-size: 14px;
             }
             .contract-container {
-                right: 10px;
-                bottom: 10px;
-            }
-            .social-links {
-                bottom: 10px;
-                left: 10px;
+                position: static;
+                text-align: center;
+                margin-top: 20px;
             }
             .contract-box {
-                font-size: 12px;
+                min-width: auto;
+                max-width: 90%;
+                overflow-x: auto;
+            }
+            .social-links {
+                position: static;
+                justify-content: center;
+                margin-top: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <a href="https://degenalien.xyz">BUY $DGA</a>
-        <a href="https://degenalien.xyz/nfts">DGAlienz NFTs <span>(TBA)</span></a>
-        <a href="https://degenalien.xyz/quests">Degen Quests <span>(TBA)</span></a>
-    </div>
-
-    <div class="container">
-        <h1>Degen Alien</h1>
-        <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="100"></p>
-        <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
-    </div>
-
+    <!-- OFFICIAL LINKS (BOTTOM LEFT - TEXT + ICONS IN ONE LINE) -->
     <div class="social-links">
         <p>Official Links:</p>
         <div class="social-icons">
-            <a href="https://t.me/DegenAliens" target="_blank">
-                <img src="assets/telegram-logo.png" alt="Telegram">
-            </a>
-            <a href="https://x.com/DegenAlienOnSol" target="_blank">
-                <img src="assets/twitter-x-logo.png" alt="Twitter X">
-            </a>
+            <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
+            <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
         </div>
     </div>
 
+    <!-- NAVIGATION -->
+    <div class="nav">
+        <a href="#">BUY $DGA</a>
+        <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
+        <a href="#">Degen Quests <span>(TBA)</span></a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+        <h1>Degen Alien</h1>
+        <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
+        <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
+    </div>
+
+    <!-- CONTRACT ADDRESS (BOTTOM RIGHT) -->
     <div class="contract-container">
         <p>Official Contract Address:</p>
         <div class="contract-box">
-            0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
-            <img src="assets/copy2.png" alt="Copy" onclick="copyAddress()">
+            <span id="contract-text" class="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
+            <img src="assets/copy2.png" alt="Copy" class="copy-icon" onclick="copyAddress()">
         </div>
     </div>
 
     <script>
         function copyAddress() {
-            const text = "0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4";
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Contract address copied!");
-            }).catch(err => {
-                console.log("Copy failed", err);
-            });
+            const contractText = document.getElementById("contract-text").innerText;
+            navigator.clipboard.writeText(contractText)
+                .then(() => alert("Contract address copied!"))
+                .catch(err => console.error("Error copying text: ", err));
         }
     </script>
 </body>
