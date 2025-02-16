@@ -18,162 +18,121 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        /* Social Icons on Top Left */
-        .social-icons {
-            position: absolute;
-            top: 20px;
-            left: 20px;
+        /* NAVIGATION */
+        .nav {
             display: flex;
-            gap: 15px;
-        }
-
-        .social-icons img {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-        }
-
-        /* Navigation Links */
-        .nav-links {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 30px;
+            padding: 15px;
+            font-size: 18px;
         }
-
-        .nav-links a {
-            color: white;
+        .nav a {
             text-decoration: none;
-            font-size: 1.2rem;
+            color: white;
+            font-weight: bold;
+        }
+        .nav span {
             font-weight: normal;
         }
 
-        /* Contract Address Box */
-        .contract-box {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background-color: black;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: 1px solid white;
-        }
-
-        .contract-box img {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Main Title */
+        /* TITLE */
         h1 {
             font-family: 'SuperTheory', sans-serif;
-            font-size: 6rem; /* Increased Size */
-            font-weight: normal; /* Removed Bold */
-            text-shadow: 0px 0px 15px #00ff00;
-            margin-top: 80px; /* Moved Higher */
+            font-size: 6rem;
+            text-shadow: 0px 0px 15px #00ff00, 0px 0px 30px #00ff00;
+            animation: glow 1.5s infinite alternate;
+            margin-top: 50px;
         }
 
-        /* Powered By */
-        .powered-by {
-            color: white;
-            font-size: 1rem;
-            margin-top: -15px;
+        @keyframes glow {
+            from {
+                text-shadow: 0px 0px 15px #00ff00;
+            }
+            to {
+                text-shadow: 0px 0px 30px #00ff00;
+            }
         }
 
-        /* Alien GIF */
-        .alien-gif {
-            width: 600px; /* 3x Larger */
-            height: auto;
-            margin-top: 20px;
+        /* GIF & CENTERED CONTENT */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Sound Toggle */
-        #sound-toggle {
-            position: fixed;
-            top: 20px;
+        .gif-container {
+            width: 70%;
+            max-width: 700px;
+        }
+
+        .contract-container {
+            position: absolute;
+            bottom: 20px;
             right: 20px;
-            width: 40px;
-            height: 40px;
+            text-align: right;
+        }
+        .contract-box {
+            display: flex;
+            align-items: center;
+            background-color: black;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 1px solid white;
             cursor: pointer;
         }
+        .contract-box img {
+            margin-left: 10px;
+            width: 18px;
+            height: 18px;
+        }
 
+        /* BACKGROUND EFFECTS */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Social Icons -->
-    <div class="social-icons">
-        <a href="https://t.me/YOURTELEGRAM" target="_blank">
-            <img src="assets/telegram-logo.png" alt="Telegram">
-        </a>
-        <a href="https://twitter.com/YOURTWITTER" target="_blank">
-            <img src="assets/twitter-x-logo.png" alt="Twitter">
-        </a>
-    </div>
-
-    <!-- Navigation Links -->
-    <div class="nav-links">
+    <div class="nav">
         <a href="#">Buy $DGA</a>
-        <a href="#">DGAliens NFTs (coming soon)</a>
-        <a href="#">Degen Run Game (coming soon)</a>
+        <a href="#">DGAliens NFTs <span>(TBA)</span></a>
+        <a href="#">Degen Run Game <span>(TBA)</span></a>
         <a href="#">FAQ</a>
     </div>
 
-    <!-- Sound Toggle -->
-    <img src="assets/sound-on.png" id="sound-toggle" alt="Toggle Sound">
+    <div class="container">
+        <h1>Degen Alien</h1>
+        <p>Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="100"></p>
+        <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
+    </div>
 
-    <!-- Main Title -->
-    <h1>Degen Alien</h1>
-    <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="100"></p>
-
-    <!-- Alien GIF -->
-    <img src="assets/degen.gif" class="alien-gif" alt="Degen Alien GIF">
-
-    <!-- Contract Address Box -->
-    <div class="contract-box" onclick="copyToClipboard()">
-        Official Contract Address: 
-        <span id="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
-        <img src="assets/copy.png" alt="Copy">
+    <div class="contract-container">
+        <p>Official Contract Address:</p>
+        <div class="contract-box" onclick="copyAddress()">
+            0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
+            <img src="assets/copy.png" alt="Copy">
+        </div>
     </div>
 
     <script>
-        function copyToClipboard() {
-            const text = document.getElementById("contract-text").innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Copied to clipboard!");
-            }).catch(err => console.log("Copy failed", err));
+        function copyAddress() {
+            navigator.clipboard.writeText("0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4");
+            alert("Contract address copied!");
         }
-
-        const backgroundMusic = new Audio("assets/lofi-space.mp3");
-        backgroundMusic.loop = true;
-        backgroundMusic.volume = 0.5;
-        backgroundMusic.play().catch(error => console.log("Autoplay blocked"));
-
-        const soundToggle = document.getElementById("sound-toggle");
-        let musicPlaying = true;
-
-        soundToggle.addEventListener("click", () => {
-            if (musicPlaying) {
-                backgroundMusic.pause();
-                soundToggle.src = "assets/sound-off.png";
-            } else {
-                backgroundMusic.play().catch(error => console.log("Playback error", error));
-                soundToggle.src = "assets/sound-on.png";
-            }
-            musicPlaying = !musicPlaying;
-        });
     </script>
-
 </body>
 </html>
