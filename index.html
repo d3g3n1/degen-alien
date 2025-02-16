@@ -131,20 +131,9 @@
             padding: 8px 15px;
             border-radius: 8px;
             border: 1px solid white;
-            cursor: pointer;
-            justify-content: space-between;
             min-width: 350px;
-        }
-        .contract-box span {
-            user-select: all; /* Allows manual selection */
-            cursor: pointer;
-            flex-grow: 1;
-            text-align: left;
-        }
-        .contract-box img {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
+            cursor: text; /* Allows easy selection */
+            user-select: all; /* Enables highlighting */
         }
     </style>
 </head>
@@ -176,23 +165,8 @@
     <div class="contract-container">
         <p>Official Contract Address:</p>
         <div class="contract-box">
-            <span id="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
-            <img src="assets/copy2.png" alt="Copy" id="copy-btn">
+            0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
         </div>
     </div>
-
-    <script>
-        function copyAddress(event) {
-            event.stopPropagation(); // Prevent event bubbling issues
-            const contractText = document.getElementById("contract-text").innerText;
-            navigator.clipboard.writeText(contractText).then(() => {
-                alert("Contract address copied!");
-            }).catch(err => console.error("Failed to copy text: ", err));
-        }
-
-        // Ensure clicking on either the text or the copy button works
-        document.getElementById("contract-text").addEventListener("click", copyAddress);
-        document.getElementById("copy-btn").addEventListener("click", copyAddress);
-    </script>
 </body>
 </html>
