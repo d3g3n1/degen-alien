@@ -26,7 +26,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px; /* Increased space between buttons */
+            gap: 40px;
             padding: 15px;
             font-size: 18px;
             flex-wrap: wrap;
@@ -143,10 +143,9 @@
             font-size: 16px;
             color: white;
             flex-grow: 1;
-            user-select: text;
             cursor: text;
             text-align: left;
-            overflow-x: auto; /* Allow scrolling if text overflows */
+            user-select: all; /* Allows manual selection */
         }
         .copy-icon {
             width: 18px;
@@ -156,7 +155,7 @@
 
         /* FIX: Make the text selectable */
         .contract-box span {
-            user-select: all;
+            user-select: all; /* Allows manual selection */
         }
 
         /* MOBILE RESPONSIVENESS */
@@ -229,7 +228,7 @@
 
     <script>
         function copyAddress() {
-            const contractText = document.getElementById("contract-text").innerText;
+            const contractText = document.getElementById("contract-text").textContent;
             navigator.clipboard.writeText(contractText)
                 .then(() => alert("Contract address copied!"))
                 .catch(err => console.error("Error copying text: ", err));
