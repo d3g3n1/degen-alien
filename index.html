@@ -76,6 +76,12 @@
             transform: scale(1.1);
         }
 
+        /* FIX: Ensure Telegram & X Buttons are Clickable */
+        .social-icons a {
+            display: inline-block;
+            text-decoration: none;
+        }
+
         /* TITLE */
         h1 {
             font-family: 'SuperTheory', sans-serif;
@@ -206,8 +212,12 @@
     <div class="social-links">
         <p>Official Links:</p>
         <div class="social-icons">
-            <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
-            <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
+            <a href="https://t.me/DegenAliens" target="_blank">
+                <img src="assets/telegram-logo.png" alt="Telegram">
+            </a>
+            <a href="https://x.com/DegenAlienOnSol" target="_blank">
+                <img src="assets/twitter-x-logo.png" alt="Twitter X">
+            </a>
         </div>
     </div>
 
