@@ -35,12 +35,11 @@
             color: white;
             font-weight: bold;
             transition: 0.3s;
+            padding: 5px 15px;
+            display: inline-block;
         }
         .nav a:hover {
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-        }
-        .nav span {
-            font-weight: normal;
         }
 
         /* TITLE */
@@ -105,6 +104,7 @@
         .social-icons a {
             display: inline-block;
             cursor: pointer;
+            z-index: 10; /* Ensures it's clickable */
         }
         .social-icons img {
             width: 45px;
@@ -137,7 +137,7 @@
             border-radius: 8px;
             border: 1px solid white;
             cursor: text;
-            user-select: all; /* Allows manual selection */
+            user-select: text; /* Allows manual selection */
         }
         .contract-box img {
             margin-left: 10px;
@@ -185,9 +185,9 @@
 </head>
 <body>
     <div class="nav">
-        <a href="#">BUY $DGA</a>
-        <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
-        <a href="#">Degen Quests <span>(TBA)</span></a>
+        <a href="https://degenalien.xyz">BUY $DGA</a>
+        <a href="https://degenalien.xyz/nfts">DGAlienz NFTs <span>(TBA)</span></a>
+        <a href="https://degenalien.xyz/quests">Degen Quests <span>(TBA)</span></a>
     </div>
 
     <div class="container">
