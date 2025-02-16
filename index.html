@@ -100,7 +100,7 @@
 
         /* POWERED BY */
         .powered-by {
-            margin-top: -10px;
+            margin-top: -20px; /* Moved closer to title */
             font-size: 18px;
             color: white;
         }
@@ -135,9 +135,15 @@
             justify-content: space-between;
             min-width: 350px;
         }
+        .contract-box span {
+            user-select: all; /* Allows manual selection */
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: left;
+        }
         .contract-box img {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
         }
     </style>
@@ -154,10 +160,9 @@
 
     <!-- NAVIGATION -->
     <div class="nav">
-        <a href="#">Buy $DGA</a>
-        <a href="#">DGAliens NFTs <span>(TBA)</span></a>
-        <a href="#">Degen Run Game <span>(TBA)</span></a>
-        <a href="#">FAQ</a>
+        <a href="#">BUY $DGA</a>
+        <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
+        <a href="#">Degen Quests <span>(TBA)</span></a>
     </div>
 
     <!-- CONTENT -->
@@ -171,4 +176,18 @@
     <div class="contract-container">
         <p>Official Contract Address:</p>
         <div class="contract-box" onclick="copyAddress()">
-            <span
+            <span id="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
+            <img src="assets/copy2.png" alt="Copy" onclick="copyAddress()">
+        </div>
+    </div>
+
+    <script>
+        function copyAddress() {
+            const contractText = document.getElementById("contract-text").innerText;
+            navigator.clipboard.writeText(contractText).then(() => {
+                alert("Contract address copied!");
+            }).catch(err => console.error("Failed to copy text: ", err));
+        }
+    </script>
+</body>
+</html>
