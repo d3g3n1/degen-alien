@@ -21,86 +21,79 @@
             overflow-x: hidden;
         }
 
-        /* Navigation Bar */
-        .navbar {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        /* Socials & Contract */
-        .socials-container {
+        /* Social Icons on Top Left */
+        .social-icons {
             position: absolute;
             top: 20px;
             left: 20px;
-            text-align: left;
+            display: flex;
+            gap: 15px;
         }
 
-        .social-icon {
+        .social-icons img {
             width: 40px;
             height: 40px;
-            margin: 5px;
             cursor: pointer;
         }
 
+        /* Navigation Links */
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        /* Contract Address Box */
         .contract-box {
-            background: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: black;
+            color: white;
             padding: 10px;
             border-radius: 5px;
-            color: white;
-            font-size: 14px;
-            margin-top: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 0.9rem;
             cursor: pointer;
-            user-select: all;
+            border: 1px solid white;
         }
 
         .contract-box img {
             width: 20px;
             height: 20px;
-            cursor: pointer;
         }
 
-        /* Centered Content */
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            position: relative;
-            z-index: 2;
-        }
-
+        /* Main Title */
         h1 {
             font-family: 'SuperTheory', sans-serif;
-            font-size: 4rem;
-            color: #00ff00;
-            text-shadow: 0px 0px 10px #00ff00;
-            margin-bottom: 10px;
+            font-size: 6rem; /* Increased Size */
+            font-weight: normal; /* Removed Bold */
+            text-shadow: 0px 0px 15px #00ff00;
+            margin-top: 80px; /* Moved Higher */
         }
 
+        /* Powered By */
         .powered-by {
             color: white;
             font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-top: -15px;
         }
 
+        /* Alien GIF */
         .alien-gif {
-            width: 250px;
+            width: 600px; /* 3x Larger */
             height: auto;
             margin-top: 20px;
         }
@@ -108,7 +101,7 @@
         /* Sound Toggle */
         #sound-toggle {
             position: fixed;
-            top: 70px;
+            top: 20px;
             right: 20px;
             width: 40px;
             height: 40px;
@@ -119,53 +112,57 @@
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <div class="navbar">
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://t.me/YOURTELEGRAM" target="_blank">
+            <img src="assets/telegram-logo.png" alt="Telegram">
+        </a>
+        <a href="https://twitter.com/YOURTWITTER" target="_blank">
+            <img src="assets/twitter-x-logo.png" alt="Twitter">
+        </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
         <a href="#">Buy $DGA</a>
         <a href="#">DGAliens NFTs (coming soon)</a>
         <a href="#">Degen Run Game (coming soon)</a>
         <a href="#">FAQ</a>
     </div>
 
-    <!-- Social Links & Contract -->
-    <div class="socials-container">
-        <img src="assets/telegram-logo.png" alt="Telegram" class="social-icon">
-        <img src="assets/twitter-x-logo.png" alt="Twitter X" class="social-icon">
-        
-        <div class="contract-box" id="contract-copy">
-            Official Contract Address: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
-            <img src="assets/copy.png" alt="Copy" id="copy-icon">
-        </div>
-    </div>
-
     <!-- Sound Toggle -->
     <img src="assets/sound-on.png" id="sound-toggle" alt="Toggle Sound">
 
-    <!-- Main Content -->
-    <div class="container">
-        <h1>DEGEN ALIEN</h1>
-        <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="120"></p>
-        <img src="assets/degen.gif" class="alien-gif" alt="Degen Alien">
+    <!-- Main Title -->
+    <h1>Degen Alien</h1>
+    <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo" width="100"></p>
+
+    <!-- Alien GIF -->
+    <img src="assets/degen.gif" class="alien-gif" alt="Degen Alien GIF">
+
+    <!-- Contract Address Box -->
+    <div class="contract-box" onclick="copyToClipboard()">
+        Official Contract Address: 
+        <span id="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
+        <img src="assets/copy.png" alt="Copy">
     </div>
 
     <script>
-        // Copy Contract Address Functionality
-        document.getElementById("contract-copy").addEventListener("click", function () {
-            const contractAddress = "0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4";
-            navigator.clipboard.writeText(contractAddress).then(() => {
-                alert("Contract address copied!");
-            });
-        });
+        function copyToClipboard() {
+            const text = document.getElementById("contract-text").innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied to clipboard!");
+            }).catch(err => console.log("Copy failed", err));
+        }
 
-        // Background Music
         const backgroundMusic = new Audio("assets/lofi-space.mp3");
         backgroundMusic.loop = true;
         backgroundMusic.volume = 0.5;
-        backgroundMusic.play().catch(error => console.log("Autoplay blocked, user interaction needed"));
+        backgroundMusic.play().catch(error => console.log("Autoplay blocked"));
 
-        // Sound Toggle
         const soundToggle = document.getElementById("sound-toggle");
         let musicPlaying = true;
+
         soundToggle.addEventListener("click", () => {
             if (musicPlaying) {
                 backgroundMusic.pause();
