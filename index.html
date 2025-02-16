@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Degen Alien</title>
     <script type="module" src="assets/space-background.js"></script>
-
+    
     <style>
         @font-face {
             font-family: 'SuperTheory';
@@ -19,16 +19,6 @@
             text-align: center;
             margin: 0;
             overflow: hidden;
-        }
-
-        /* BACKGROUND ANIMATION */
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
         }
 
         /* NAVIGATION */
@@ -47,59 +37,11 @@
             font-weight: bold;
             transition: 0.3s ease-in-out;
         }
+        
+        /* NEON GREEN GLOW ON HOVER */
         .nav a:hover {
             color: #00ff00;
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-        }
-
-        /* SOCIAL LINKS (TOP RIGHT) */
-        .social-links {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .social-links a img {
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-        .social-links a img:hover {
-            transform: scale(1.1);
-        }
-
-        /* CONTRACT ADDRESS BOX (MOVED A FEW LINES DOWN) */
-        .contract-container {
-            position: absolute;
-            top: 60px; /* Moved it down */
-            left: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .contract-container p {
-            font-size: 14px;
-            font-weight: normal;
-            color: white;
-            margin-bottom: 5px;
-            text-align: left;
-        }
-
-        .contract-box {
-            display: inline-block;
-            background-color: black;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 8px;
-            border: 1px solid white;
-            font-size: 14px;
-            font-weight: normal;
-            white-space: nowrap;
-            user-select: text; /* Now selectable like normal text */
         }
 
         /* TITLE */
@@ -120,7 +62,7 @@
             }
         }
 
-        /* MAIN CONTENT */
+        /* CONTENT CONTAINER */
         .container {
             display: flex;
             flex-direction: column;
@@ -131,9 +73,12 @@
             z-index: 2;
         }
 
+        /* GIF CONTAINER (ALIGNED TO BOTTOM) */
         .gif-container {
             width: 80%;
             max-width: 750px;
+            position: absolute;
+            bottom: 0;
         }
 
         /* POWERED BY */
@@ -147,7 +92,22 @@
             vertical-align: middle;
         }
 
-        /* RESPONSIVENESS */
+        /* SOCIAL LINKS */
+        .social-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .social-icons img {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+        /* MOBILE RESPONSIVENESS */
         @media screen and (max-width: 768px) {
             h1 {
                 font-size: 3.5rem;
@@ -155,7 +115,7 @@
             .nav {
                 flex-direction: column;
                 text-align: center;
-                gap: 10px;
+                gap: 8px;
             }
             .gif-container {
                 width: 90%;
@@ -164,44 +124,10 @@
             .powered-by {
                 font-size: 14px;
             }
-            .contract-container {
-                top: auto;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .contract-box {
-                min-width: auto;
-                max-width: 90%;
-                overflow-x: auto;
-            }
-            .social-links {
-                top: 15px;
-                right: 10px;
-                gap: 10px;
-            }
         }
     </style>
 </head>
 <body>
-
-    <!-- BACKGROUND ANIMATION -->
-    <canvas id="spaceCanvas"></canvas>
-
-    <!-- SOCIAL LINKS (TOP RIGHT) -->
-    <div class="social-links">
-        <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
-        <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
-    </div>
-
-    <!-- CONTRACT ADDRESS (TOP LEFT, MOVED DOWN) -->
-    <div class="contract-container">
-        <p>Official Contract Address:</p>
-        <div class="contract-box">
-            0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
-        </div>
-    </div>
-
     <!-- NAVIGATION -->
     <div class="nav">
         <a href="#">BUY $DGA</a>
@@ -209,12 +135,17 @@
         <a href="#">Degen Quests <span>(TBA)</span></a>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- SOCIAL LINKS (TOP RIGHT) -->
+    <div class="social-links">
+        <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
+        <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
+    </div>
+
+    <!-- CONTENT -->
     <div class="container">
         <h1>Degen Alien</h1>
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
     </div>
-
 </body>
 </html>
