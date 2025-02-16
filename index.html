@@ -44,13 +44,15 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         .social-links p {
             font-size: 18px;
             color: white;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin: 0;
         }
         .social-icons {
             display: flex;
@@ -141,7 +143,7 @@
     </style>
 </head>
 <body>
-    <!-- OFFICIAL LINKS (BOTTOM LEFT) -->
+    <!-- OFFICIAL LINKS (BOTTOM LEFT - TEXT + ICONS IN ONE LINE) -->
     <div class="social-links">
         <p>Official Links:</p>
         <div class="social-icons">
@@ -169,18 +171,4 @@
     <div class="contract-container">
         <p>Official Contract Address:</p>
         <div class="contract-box" onclick="copyAddress()">
-            <span id="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
-            <img src="assets/copy2.png" alt="Copy" onclick="copyAddress()">
-        </div>
-    </div>
-
-    <script>
-        function copyAddress() {
-            const contractText = document.getElementById("contract-text").innerText;
-            navigator.clipboard.writeText(contractText).then(() => {
-                alert("Contract address copied!");
-            }).catch(err => console.error("Failed to copy text: ", err));
-        }
-    </script>
-</body>
-</html>
+            <span
