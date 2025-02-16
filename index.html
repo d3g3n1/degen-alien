@@ -100,7 +100,7 @@
 
         /* POWERED BY */
         .powered-by {
-            margin-top: -20px; /* Moved closer to title */
+            margin-top: -20px;
             font-size: 18px;
             color: white;
         }
@@ -175,19 +175,24 @@
     <!-- CONTRACT ADDRESS (BOTTOM RIGHT) -->
     <div class="contract-container">
         <p>Official Contract Address:</p>
-        <div class="contract-box" onclick="copyAddress()">
+        <div class="contract-box">
             <span id="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
-            <img src="assets/copy2.png" alt="Copy" onclick="copyAddress()">
+            <img src="assets/copy2.png" alt="Copy" id="copy-btn">
         </div>
     </div>
 
     <script>
-        function copyAddress() {
+        function copyAddress(event) {
+            event.stopPropagation(); // Prevent event bubbling issues
             const contractText = document.getElementById("contract-text").innerText;
             navigator.clipboard.writeText(contractText).then(() => {
                 alert("Contract address copied!");
             }).catch(err => console.error("Failed to copy text: ", err));
         }
+
+        // Ensure clicking on either the text or the copy button works
+        document.getElementById("contract-text").addEventListener("click", copyAddress);
+        document.getElementById("copy-btn").addEventListener("click", copyAddress);
     </script>
 </body>
 </html>
