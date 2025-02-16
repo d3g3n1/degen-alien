@@ -133,7 +133,18 @@
             border: 1px solid white;
             min-width: 350px;
             cursor: text; /* Allows easy selection */
-            user-select: all; /* Enables highlighting */
+        }
+        .contract-text {
+            user-select: text;
+            cursor: text;
+            font-size: 16px;
+            color: white;
+            margin-right: 10px;
+        }
+        .copy-icon {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -165,8 +176,18 @@
     <div class="contract-container">
         <p>Official Contract Address:</p>
         <div class="contract-box">
-            0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
+            <span id="contract-text" class="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
+            <img src="assets/copy2.png" alt="Copy" class="copy-icon" onclick="copyAddress()">
         </div>
     </div>
+
+    <script>
+        function copyAddress() {
+            const contractText = document.getElementById("contract-text").innerText;
+            navigator.clipboard.writeText(contractText)
+                .then(() => alert("Contract address copied!"))
+                .catch(err => console.error("Error copying text: ", err));
+        }
+    </script>
 </body>
 </html>
