@@ -44,15 +44,18 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            text-align: left;
+            text-align: center;
+            width: 140px;
         }
         .social-links p {
-            font-size: 14px;
+            font-size: 18px;
             color: white;
+            font-weight: bold;
             margin-bottom: 5px;
         }
         .social-icons {
             display: flex;
+            justify-content: center;
             gap: 10px;
         }
         .social-icons img {
@@ -97,7 +100,7 @@
 
         /* POWERED BY */
         .powered-by {
-            margin-top: -15px;
+            margin-top: -10px;
             font-size: 18px;
             color: white;
         }
@@ -111,13 +114,14 @@
             position: absolute;
             bottom: 20px;
             right: 20px;
-            text-align: right;
+            text-align: left;
         }
         .contract-container p {
             font-size: 14px;
             font-weight: bold;
             color: white;
             margin-bottom: 5px;
+            text-align: left;
         }
         .contract-box {
             display: flex;
@@ -128,11 +132,13 @@
             border-radius: 8px;
             border: 1px solid white;
             cursor: pointer;
+            justify-content: space-between;
+            min-width: 350px;
         }
         .contract-box img {
-            margin-left: 10px;
             width: 18px;
             height: 18px;
+            cursor: pointer;
         }
 
         /* BACKGROUND EFFECTS */
@@ -176,7 +182,7 @@
         <p>Official Contract Address:</p>
         <div class="contract-box" onclick="copyAddress()">
             0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
-            <img src="assets/copy.png" alt="Copy">
+            <img src="assets/copy2.png" alt="Copy">
         </div>
     </div>
 
