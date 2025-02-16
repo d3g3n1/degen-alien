@@ -76,12 +76,6 @@
             transform: scale(1.1);
         }
 
-        /* FIX: Ensure Telegram & X Buttons are Clickable */
-        .social-icons a {
-            display: inline-block;
-            text-decoration: none;
-        }
-
         /* TITLE */
         h1 {
             font-family: 'SuperTheory', sans-serif;
@@ -127,51 +121,6 @@
             vertical-align: middle;
         }
 
-        /* CONTRACT ADDRESS */
-        .contract-container {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            text-align: left;
-        }
-        .contract-container p {
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 5px;
-        }
-        .contract-box {
-            display: flex;
-            align-items: center;
-            background-color: black;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 8px;
-            border: 1px solid white;
-            min-width: 350px;
-            cursor: text;
-            white-space: nowrap;
-        }
-        .contract-text {
-            font-size: 16px;
-            color: white;
-            flex-grow: 1;
-            user-select: text;
-            cursor: text;
-            text-align: left;
-            overflow-x: auto;
-        }
-        .copy-icon {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        /* FIX: Make the text selectable */
-        .contract-box span {
-            user-select: all;
-        }
-
         /* MOBILE RESPONSIVENESS */
         @media screen and (max-width: 768px) {
             h1 {
@@ -188,16 +137,6 @@
             }
             .powered-by {
                 font-size: 14px;
-            }
-            .contract-container {
-                position: static;
-                text-align: center;
-                margin-top: 20px;
-            }
-            .contract-box {
-                min-width: auto;
-                max-width: 90%;
-                overflow-x: auto;
             }
             .social-links {
                 position: static;
@@ -235,22 +174,5 @@
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
     </div>
 
-    <!-- CONTRACT ADDRESS (BOTTOM RIGHT) -->
-    <div class="contract-container">
-        <p>Official Contract Address:</p>
-        <div class="contract-box">
-            <span id="contract-text" class="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
-            <img src="assets/copy2.png" alt="Copy" class="copy-icon" onclick="copyAddress()">
-        </div>
-    </div>
-
-    <script>
-        function copyAddress() {
-            const contractText = document.getElementById("contract-text").innerText;
-            navigator.clipboard.writeText(contractText)
-                .then(() => alert("Contract address copied!"))
-                .catch(err => console.error("Error copying text: ", err));
-        }
-    </script>
 </body>
 </html>
