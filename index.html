@@ -144,8 +144,7 @@
 
         .ticker {
             display: flex;
-            width: 200%;
-            animation: tickerScroll 10s linear infinite;
+            animation: tickerScroll 30s linear infinite alternate;
         }
 
         .ticker span {
@@ -153,17 +152,13 @@
             font-size: 1.8rem;
             color: white;
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-            display: flex;
-            min-width: 100%;
+            white-space: nowrap;
+            padding-right: 30px;
         }
 
         @keyframes tickerScroll {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-50%);
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
         /* NEW SECTION */
@@ -173,15 +168,11 @@
             padding: 50px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             flex-wrap: wrap;
-            gap: 40px;
             text-align: left;
-        }
-
-        .alien-coin-gif {
-            width: 60%;
-            max-width: 500px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .text-box {
@@ -195,7 +186,10 @@
             font-size: 12px;
             color: gray;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
+            padding: 10px;
+            max-width: 800px;
+            margin: auto;
         }
 
         /* RESPONSIVENESS */
@@ -231,6 +225,11 @@
                 justify-content: center;
                 margin-top: 10px;
             }
+
+            .new-section {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -253,8 +252,8 @@
     <!-- NAVIGATION -->
     <div class="nav">
         <a href="#">BUY $DGA</a>
-        <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
-        <a href="#">Degen Quests <span>(TBA)</span></a>
+        <a href="#">DGAlienz NFTs (TBA)</a>
+        <a href="#">Degen Quests (TBA)</a>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -276,17 +275,16 @@
     <div class="new-section">
         <div class="text-box">
             <h2>$DGA Tokenomics:</h2>
-            🛸 Total Supply: 1,000,000,000 $DGA (1B)<br>
-            🚀 Buy/Sell Tax: 0%<br>
-            👾 Team Allocation: 7%<br>
+            🛸 Total Supply: 1B $DGA <br>🚀 Buy/Sell Tax: 0%<br>👾 Team Allocation: 7%
         </div>
         <img src="assets/aliencoin.gif" class="alien-coin-gif">
         <div class="text-box">
             <h2>Degen Alien Roadmap:</h2>
-            🚀 Stealth Launch<br>
-            🎨 Meme Contests & Giveaways<br>
+            🚀 Stealth Launch<br>🎨 Meme Contests
         </div>
     </div>
+
+    <p class="disclaimer">Degen Alien ($DGA) is a community-driven meme coin...</p>
 
 </body>
 </html>
