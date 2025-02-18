@@ -109,7 +109,7 @@
             align-items: center;
             position: relative;
             z-index: 2;
-            padding-bottom: 50px; /* Allows scrolling to next section */
+            padding-bottom: 50px;
         }
 
         .gif-container {
@@ -169,17 +169,42 @@
         /* NEW SECTION BELOW THE BANNER */
         .new-section {
             background-color: black;
-            min-height: 100vh; /* Ensure scrollable section */
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
-            flex-direction: column;
+            flex-wrap: wrap;
             padding: 50px 20px;
         }
 
         .alien-coin-gif {
             width: 60%;
-            max-width: 500px;
+            max-width: 400px;
+        }
+
+        .info-box {
+            width: 30%;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .info-box h2 {
+            color: #00ff00;
+            font-size: 1.8rem;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .disclaimer {
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: gray;
+            margin-top: 40px;
+            max-width: 800px;
         }
 
         /* RESPONSIVENESS */
@@ -201,19 +226,14 @@
                 font-size: 14px;
             }
 
-            /* Move CA below buttons for mobile */
-            .contract-address {
-                position: static;
+            .new-section {
+                flex-direction: column;
                 text-align: center;
-                margin-top: 10px;
             }
 
-            /* Move social links below CA and center them */
-            .social-links {
-                position: static;
+            .info-box {
+                width: 90%;
                 text-align: center;
-                justify-content: center;
-                margin-top: 10px;
             }
         }
     </style>
@@ -228,7 +248,7 @@
         CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
-    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
+    <!-- SOCIAL LINKS -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
@@ -251,21 +271,31 @@
     <!-- SCROLLING BANNER -->
     <div class="ticker-container">
         <div class="ticker">
-            <span>
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-            </span>
-            <span>
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-            </span>
+            <span>The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |</span>
+            <span>The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |</span>
         </div>
     </div>
 
-    <!-- NEW SCROLLABLE SECTION -->
+    <!-- NEW SECTION -->
     <div class="new-section">
-        <img src="assets/aliencoin.gif" class="alien-coin-gif" alt="Alien Coin GIF">
-    </div>
+        <div class="info-box">
+            <h2>$DGA Tokenomics:</h2>
+            <p>🛸 Total Supply: 1,000,000,000 $DGA (1B)</p>
+            <p>🚀 Buy/Sell Tax: 0% – Because Taxes Are for Normies</p>
+            <p>👾 Team Allocation: 7% (For Marketing and Shenanigans)</p>
+            <p>🔥 Fair Launch: Straight from the Galaxy to Pump.Fun</p>
+            <p>💎 No Presale. No VC. No Mercy.</p>
+            <p>💀 Just Pure Degen Chaos.</p>
+        </div>
 
+        <img src="assets/aliencoin.gif" class="alien-coin-gif" alt="Alien Coin GIF">
+
+        <div class="info-box">
+            <h2>Degen Alien Roadmap:</h2>
+            <p>🚀 Stealth Launch</p>
+            <p>🛸 First Degen Invasion (Early Apes)</p>
+            <p>🎨 Meme Creation & Viral Spreading</p>
+        </div>
+    </div>
 </body>
 </html>
