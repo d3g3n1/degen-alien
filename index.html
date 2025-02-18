@@ -129,7 +129,7 @@
             vertical-align: middle;
         }
 
-        /* SCROLLING BANNER WITH SMOOTH BOUNCE */
+        /* SCROLLING BANNER */
         .ticker-container {
             width: 100%;
             overflow: hidden;
@@ -145,7 +145,7 @@
         .ticker {
             display: flex;
             width: 200%;
-            animation: tickerBounce 30s ease-in-out infinite alternate;
+            animation: tickerScroll 10s linear infinite;
         }
 
         .ticker span {
@@ -157,15 +157,12 @@
             min-width: 100%;
         }
 
-        @keyframes tickerBounce {
-            0% {
+        @keyframes tickerScroll {
+            from {
                 transform: translateX(0);
             }
-            50% {
+            to {
                 transform: translateX(-50%);
-            }
-            100% {
-                transform: translateX(0);
             }
         }
 
@@ -229,7 +226,7 @@
         CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
-    <!-- SOCIAL LINKS -->
+    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
@@ -253,6 +250,11 @@
     <div class="ticker-container">
         <div class="ticker">
             <span>
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+            </span>
+            <span>
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
                 The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
             </span>
         </div>
