@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degen Alien</title>
+    <script type="module" src="assets/space-background.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'SuperTheory';
+            src: url('assets/SuperTheory-9MvJn.ttf') format('truetype');
+        }
+
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND ANIMATION */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            padding-bottom: 50px;
+        }
+
+        .gif-container {
+            width: 80%;
+            max-width: 750px;
+            margin-top: 50px;
+        }
+
+        /* NEW SECTION BELOW THE BANNER */
+        .new-section {
+            background-color: black;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            gap: 30px;
+        }
+
+        .tokenomics, .roadmap {
+            width: 45%;
+            text-align: left;
+            font-size: 18px;
+        }
+
+        .tokenomics h2, .roadmap h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ff00;
+            text-shadow: 0px 0px 10px #00ff00;
+        }
+
+        .alien-coin-gif {
+            width: 40%;
+            max-width: 500px;
+        }
+
+        /* DISCLAIMER */
+        .disclaimer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #888;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        /* RESPONSIVENESS */
+        @media screen and (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .tokenomics, .roadmap {
+                width: 90%;
+                text-align: center;
+            }
+            .alien-coin-gif {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NEW SCROLLABLE SECTION -->
+    <div class="new-section">
+        <div class="content-wrapper">
+            <div class="tokenomics">
+                <h2>$DGA Tokenomics:</h2>
+                🛸 Total Supply: 1,000,000,000 $DGA (1B)<br>
+                🚀 Buy/Sell Tax: 0% – Because Taxes Are for Normies<br>
+                👾 Team Allocation: 7% (For Marketing and Shenanigans)<br>
+                🔥 Fair Launch: Straight from the Galaxy to Pump.Fun<br>
+                💎 No Presale. No VC. No Mercy.<br>
+                💀 Just Pure Degen Chaos.
+            </div>
+
+            <img src="assets/aliencoin.gif" class="alien-coin-gif" alt="Alien Coin GIF">
+
+            <div class="roadmap">
+                <h2>Degen Alien Roadmap:</h2>
+                <strong>Phase 1: The Alien Awakening</strong><br>
+                🚀 Stealth Launch<br>
+                🛸 First Degen Invasion (Early Apes)<br>
+                🎨 Meme Creation & Viral Spreading<br>
+                🔥 $DGA on Trending Lists<br><br>
+
+                <strong>Phase 2: The Degen Uprising</strong><br>
+                🏆 Meme Contests & Giveaways<br>
+                🎮 Mini-Game Launch (Play-to-Degen)<br>
+                👽 NFT Claims & Airdrops<br>
+                🪐 Partnerships with Other Degen Projects<br><br>
+
+                <strong>Phase 3: Universal Domination</strong> (Stay tuned)
+            </div>
+        </div>
+
+        <p class="disclaimer">
+            Degen Alien ($DGA) is a community-driven meme coin created purely for entertainment, engagement, and intergalactic degen culture. $DGA is not an investment, security, or financial product, nor does it represent any ownership, equity, or rights in any entity. The token has no intrinsic value, guarantees, or promises of future returns. Trading and holding $DGA involves high risk, extreme volatility, and the potential for total loss. By interacting with $DGA, users acknowledge and accept the speculative nature of meme coins and agree to assume all risks associated with digital assets. Nothing on this site constitutes financial, legal, or investment advice. Always DYOR (Do Your Own Research) and never invest more than you can afford to lose.
+        </p>
+    </div>
+
+</body>
+</html>
