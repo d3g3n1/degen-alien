@@ -28,7 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Ensures it's behind everything */
+            z-index: -1;
         }
 
         /* NAVIGATION */
@@ -72,7 +72,7 @@
             transform: scale(1.1);
         }
 
-        /* CONTRACT ADDRESS (ONE LINE, TOP LEFT) */
+        /* CONTRACT ADDRESS */
         .contract-address {
             position: absolute;
             top: 10px;
@@ -116,12 +116,12 @@
         .gif-container {
             width: 80%;
             max-width: 750px;
-            margin-top: 50px; /* Moves GIF lower */
+            margin-top: 50px;
         }
 
         /* POWERED BY */
         .powered-by {
-            margin-top: -5px; /* Slightly closer to the title */
+            margin-top: -5px;
             font-size: 16px;
             color: white;
         }
@@ -143,7 +143,7 @@
             .gif-container {
                 width: 90%;
                 max-width: 500px;
-                margin-top: 30px; /* Adjusted for mobile */
+                margin-top: 30px;
             }
             .powered-by {
                 font-size: 14px;
@@ -153,10 +153,12 @@
                 right: 10px;
                 gap: 10px;
             }
+
+            /* Move CA under buttons for mobile */
             .contract-address {
-                top: 5px;
-                left: 10px;
-                font-size: 12px;
+                position: static;
+                text-align: center;
+                margin-top: 10px;
             }
         }
     </style>
@@ -165,11 +167,6 @@
 
     <!-- BACKGROUND ANIMATION -->
     <canvas id="spaceCanvas"></canvas>
-
-    <!-- CONTRACT ADDRESS (TOP LEFT, ONE LINE) -->
-    <div class="contract-address">
-        CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
-    </div>
 
     <!-- SOCIAL LINKS (TOP RIGHT) -->
     <div class="social-links">
@@ -182,6 +179,11 @@
         <a href="#">BUY $DGA</a>
         <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
         <a href="#">Degen Quests <span>(TBA)</span></a>
+    </div>
+
+    <!-- CONTRACT ADDRESS -->
+    <div class="contract-address">
+        CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
     <!-- MAIN CONTENT -->
