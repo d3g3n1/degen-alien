@@ -31,37 +31,6 @@
             z-index: -1;
         }
 
-        /* CONTRACT ADDRESS */
-        .contract-address {
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            user-select: text;
-            cursor: text;
-        }
-
-        /* SOCIAL LINKS */
-        .social-links {
-            position: absolute;
-            top: 50px; /* Moves it down */
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .social-links a img {
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-        .social-links a img:hover {
-            transform: scale(1.1);
-        }
-
         /* NAVIGATION */
         .nav {
             display: flex;
@@ -82,6 +51,37 @@
         .nav a:hover {
             color: #00ff00;
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+        }
+
+        /* SOCIAL LINKS */
+        .social-links {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .social-links a img {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .social-links a img:hover {
+            transform: scale(1.1);
+        }
+
+        /* CONTRACT ADDRESS */
+        .contract-address {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            user-select: text;
+            cursor: text;
         }
 
         /* TITLE */
@@ -130,7 +130,7 @@
             vertical-align: middle;
         }
 
-        /* MOBILE FIXES */
+        /* RESPONSIVENESS */
         @media screen and (max-width: 768px) {
             h1 {
                 font-size: 3.5rem;
@@ -139,7 +139,6 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 10px;
-                margin-top: 40px; /* Moves buttons further down */
             }
             .gif-container {
                 width: 90%;
@@ -177,13 +176,13 @@
         CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
-    <!-- SOCIAL LINKS (NOW MOVED BELOW CA FOR MOBILE) -->
+    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
     </div>
 
-    <!-- NAVIGATION (NOW MOVED LOWER FOR MOBILE) -->
+    <!-- NAVIGATION -->
     <div class="nav">
         <a href="#">BUY $DGA</a>
         <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
