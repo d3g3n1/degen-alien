@@ -72,10 +72,10 @@
             transform: scale(1.1);
         }
 
-        /* CONTRACT ADDRESS (TOP LEFT) */
+        /* CONTRACT ADDRESS (BOTTOM LEFT) */
         .contract-address {
             position: absolute;
-            top: 10px;
+            bottom: 20px;
             left: 20px;
             font-size: 14px;
             color: white;
@@ -152,7 +152,7 @@
                 gap: 10px;
             }
             .contract-address {
-                top: 50px;
+                bottom: 10px;
                 left: 10px;
                 font-size: 12px;
             }
@@ -163,9 +163,6 @@
 
     <!-- BACKGROUND ANIMATION -->
     <canvas id="spaceCanvas"></canvas>
-
-    <!-- CONTRACT ADDRESS (TOP LEFT) -->
-    <div class="contract-address">CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</div>
 
     <!-- SOCIAL LINKS (TOP RIGHT) -->
     <div class="social-links">
@@ -186,6 +183,9 @@
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
     </div>
+
+    <!-- CONTRACT ADDRESS (BOTTOM LEFT) -->
+    <div class="contract-address">CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</div>
 
 </body>
 </html>
