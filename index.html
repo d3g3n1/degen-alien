@@ -166,18 +166,36 @@
             }
         }
 
-        /* NEW SECTION BELOW THE BANNER */
+        /* NEW SECTION */
         .new-section {
             background-color: black;
-            height: 100vh;
+            color: white;
+            padding: 50px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            text-align: left;
         }
 
         .alien-coin-gif {
             width: 60%;
             max-width: 500px;
+        }
+
+        .text-box {
+            max-width: 400px;
+        }
+        .text-box h2 {
+            font-size: 24px;
+            color: #00ff00;
+        }
+        .disclaimer {
+            font-size: 12px;
+            color: gray;
+            text-align: center;
+            margin-top: 30px;
         }
 
         /* RESPONSIVENESS */
@@ -226,7 +244,7 @@
         CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
-    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
+    <!-- SOCIAL LINKS -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
@@ -249,20 +267,25 @@
     <!-- SCROLLING BANNER -->
     <div class="ticker-container">
         <div class="ticker">
-            <span>
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-            </span>
-            <span>
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-            </span>
+            <span>The Ticker is $DGA | </span>
+            <span>The Ticker is $DGA | </span>
         </div>
     </div>
 
-    <!-- NEW SCROLLABLE SECTION -->
+    <!-- NEW SECTION -->
     <div class="new-section">
-        <img src="assets/aliencoin.gif" class="alien-coin-gif" alt="Alien Coin GIF">
+        <div class="text-box">
+            <h2>$DGA Tokenomics:</h2>
+            🛸 Total Supply: 1,000,000,000 $DGA (1B)<br>
+            🚀 Buy/Sell Tax: 0%<br>
+            👾 Team Allocation: 7%<br>
+        </div>
+        <img src="assets/aliencoin.gif" class="alien-coin-gif">
+        <div class="text-box">
+            <h2>Degen Alien Roadmap:</h2>
+            🚀 Stealth Launch<br>
+            🎨 Meme Contests & Giveaways<br>
+        </div>
     </div>
 
 </body>
