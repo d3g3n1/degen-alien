@@ -50,18 +50,6 @@
             transform: scale(1.1);
         }
 
-        /* CONTRACT ADDRESS */
-        .contract-address {
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            user-select: text;
-            cursor: text;
-        }
-
         /* NAVIGATION */
         .nav {
             display: flex;
@@ -121,12 +109,12 @@
 
         /* Solana Logo - Fixed Sizing */
         .powered-by {
-            color: white; /* Updated text color to white */
+            color: white;
             font-size: 16px;
         }
 
         .powered-by img {
-            width: 90px; /* Original size */
+            width: 90px;
             vertical-align: middle;
         }
 
@@ -162,6 +150,15 @@
             0% { transform: translateX(0); }
             50% { transform: translateX(-50%); }
             100% { transform: translateX(0); }
+        }
+
+        /* CONTRACT ADDRESS (Moved to Second Section) */
+        .contract-address {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
         }
 
         /* SECOND SECTION */
@@ -219,11 +216,6 @@
     <!-- BACKGROUND ANIMATION -->
     <canvas id="spaceCanvas"></canvas>
 
-    <!-- CONTRACT ADDRESS -->
-    <div class="contract-address">
-        CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
-    </div>
-
     <!-- SOCIAL LINKS -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
@@ -247,9 +239,12 @@
     <!-- SCROLLING BANNER -->
     <div class="ticker-container">
         <div class="ticker">
-            <span>The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |</span>
+            <span>The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |</span>
         </div>
     </div>
+
+    <!-- CONTRACT ADDRESS (Now Below Banner) -->
+    <p class="contract-address">Contract Address: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</p>
 
     <!-- SECOND SECTION -->
     <div class="new-section">
