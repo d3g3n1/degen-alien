@@ -72,24 +72,14 @@
             transform: scale(1.1);
         }
 
-        /* CONTRACT ADDRESS (TOP LEFT) */
-        .contract-container {
+        /* CONTRACT ADDRESS (ONE LINE, TOP LEFT) */
+        .contract-address {
             position: absolute;
-            top: 5px;
-            left: 10px;
-            text-align: left;
-            line-height: 1.5;
-        }
-        .contract-container p {
-            font-size: 13px;
-            color: white;
+            top: 10px;
+            left: 15px;
+            font-size: 14px;
             font-weight: bold;
-            margin-bottom: 5px; /* Space between text and contract address */
-        }
-        .contract-text {
-            font-size: 13px;
             color: white;
-            font-weight: bold;
             user-select: text;
             cursor: text;
         }
@@ -163,7 +153,7 @@
                 right: 10px;
                 gap: 10px;
             }
-            .contract-container {
+            .contract-address {
                 top: 5px;
                 left: 10px;
                 font-size: 12px;
@@ -175,6 +165,11 @@
 
     <!-- BACKGROUND ANIMATION -->
     <canvas id="spaceCanvas"></canvas>
+
+    <!-- CONTRACT ADDRESS (TOP LEFT, ONE LINE) -->
+    <div class="contract-address">
+        CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
+    </div>
 
     <!-- SOCIAL LINKS (TOP RIGHT) -->
     <div class="social-links">
@@ -194,12 +189,6 @@
         <h1>Degen Alien</h1>
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
-    </div>
-
-    <!-- CONTRACT ADDRESS (TOP LEFT) -->
-    <div class="contract-container">
-        <p>Official Contract Address:</p>
-        <div class="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</div>
     </div>
 
 </body>
