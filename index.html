@@ -83,14 +83,18 @@
             font-size: 14px;
             color: white;
             font-weight: bold;
-            margin: 0;
+            margin-bottom: 5px;
         }
-        .contract-container .contract-text {
+        .contract-box {
+            border: 1px solid white;
+            padding: 5px 10px;
+            display: inline-block;
+            border-radius: 5px;
             font-size: 14px;
             color: white;
-            font-weight: normal;
             cursor: text;
             user-select: text;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         /* TITLE */
@@ -197,8 +201,8 @@
 
     <!-- CONTRACT ADDRESS (TOP LEFT) -->
     <div class="contract-container">
-        <p>Official CA:</p>
-        <span class="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
+        <p>Official Contract Address:</p>
+        <div class="contract-box">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</div>
     </div>
 
 </body>
