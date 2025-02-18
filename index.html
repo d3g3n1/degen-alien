@@ -18,8 +18,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            overflow: hidden;
         }
 
         /* BACKGROUND ANIMATION */
@@ -32,16 +31,25 @@
             z-index: -1;
         }
 
-        /* CONTRACT ADDRESS */
-        .contract-address {
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 14px;
-            font-weight: bold;
+        /* NAVIGATION */
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 15px;
+            font-size: 18px;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            text-decoration: none;
             color: white;
-            user-select: text;
-            cursor: text;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+        }
+        .nav a:hover {
+            color: #00ff00;
+            text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
         }
 
         /* SOCIAL LINKS */
@@ -63,26 +71,16 @@
             transform: scale(1.1);
         }
 
-        /* NAVIGATION */
-        .nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            padding: 15px;
-            font-size: 18px;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            text-decoration: none;
-            color: white;
+        /* CONTRACT ADDRESS */
+        .contract-address {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 14px;
             font-weight: bold;
-            transition: 0.3s ease-in-out;
-        }
-        /* NEON GREEN GLOW EFFECT */
-        .nav a:hover {
-            color: #00ff00;
-            text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+            color: white;
+            user-select: text;
+            cursor: text;
         }
 
         /* TITLE */
@@ -120,50 +118,6 @@
             margin-top: 50px;
         }
 
-        /* TICKER BANNER */
-        .ticker-wrapper {
-            width: 100%;
-            overflow: hidden;
-            background-color: black;
-            border-top: 2px solid white;
-            border-bottom: 2px solid white;
-            padding: 10px 0;
-            white-space: nowrap;
-            position: relative;
-            animation: glowTicker 1.5s infinite alternate;
-            border: 2px solid #00ff00;
-            box-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-        }
-
-        .ticker {
-            display: inline-block;
-            font-family: 'SuperTheory', sans-serif;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            white-space: nowrap;
-            animation: scrollText 24s linear infinite; /* 2x slower */
-        }
-
-        @keyframes scrollText {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        @keyframes glowTicker {
-            from {
-                box-shadow: 0px 0px 10px #00ff00;
-            }
-            to {
-                box-shadow: 0px 0px 20px #00ff00;
-            }
-        }
-
         /* POWERED BY */
         .powered-by {
             margin-top: -5px;
@@ -175,18 +129,41 @@
             vertical-align: middle;
         }
 
-        /* NEW SECTION AFTER SCROLL */
-        .next-section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        /* SCROLLING BANNER */
+        .ticker-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background-color: black;
+            border: 2px solid white;
+            box-shadow: 0px 0px 15px #00ff00, 0px 0px 30px #00ff00;
+            padding: 10px 0;
+            margin-top: 30px;
         }
 
-        .coin-gif {
-            width: 300px;
-            max-width: 90%;
+        .ticker {
+            display: flex;
+            width: 200%;
+            animation: tickerScroll 10s linear infinite;
+        }
+
+        .ticker span {
+            font-family: 'SuperTheory', sans-serif;
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+            display: flex;
+            min-width: 100%;
+        }
+
+        @keyframes tickerScroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
         }
 
         /* RESPONSIVENESS */
@@ -235,7 +212,7 @@
         CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
-    <!-- SOCIAL LINKS -->
+    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
@@ -255,19 +232,18 @@
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
     </div>
 
-    <!-- SCROLLING TICKER BANNER -->
-    <div class="ticker-wrapper">
+    <!-- SCROLLING BANNER -->
+    <div class="ticker-container">
         <div class="ticker">
-            The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-            The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-            The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
-            The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+            <span>
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+            </span>
+            <span>
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+            </span>
         </div>
-    </div>
-
-    <!-- SCROLL-DOWN SECTION -->
-    <div class="next-section">
-        <img src="assets/aliencoin.gif" class="coin-gif" alt="Alien Coin GIF">
     </div>
 
 </body>
