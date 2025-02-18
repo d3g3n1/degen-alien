@@ -93,8 +93,12 @@
         }
 
         @keyframes glow {
-            from { text-shadow: 0px 0px 15px #00ff00; }
-            to { text-shadow: 0px 0px 30px #00ff00; }
+            from {
+                text-shadow: 0px 0px 15px #00ff00;
+            }
+            to {
+                text-shadow: 0px 0px 30px #00ff00;
+            }
         }
 
         /* MAIN CONTENT */
@@ -114,10 +118,22 @@
             margin-top: 50px;
         }
 
-        /* BANNER */
+        /* POWERED BY */
+        .powered-by {
+            margin-top: -5px;
+            font-size: 16px;
+            color: white;
+        }
+        .powered-by img {
+            width: 90px;
+            vertical-align: middle;
+        }
+
+        /* SCROLLING BANNER */
         .ticker-container {
             width: 100%;
             overflow: hidden;
+            white-space: nowrap;
             position: relative;
             background-color: black;
             border: 2px solid white;
@@ -128,7 +144,8 @@
 
         .ticker {
             display: flex;
-            animation: tickerScroll 15s linear infinite alternate;
+            width: 200%;
+            animation: tickerScroll 10s linear infinite;
         }
 
         .ticker span {
@@ -136,70 +153,117 @@
             font-size: 1.8rem;
             color: white;
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-            padding-right: 20px;
+            display: flex;
+            min-width: 100%;
         }
 
         @keyframes tickerScroll {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
         }
 
-        /* NEW SECTION */
+        /* NEW SECTION BELOW THE BANNER */
         .new-section {
+            background-color: black;
+            height: 100vh;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            padding: 50px 10%;
         }
 
         .alien-coin-gif {
-            width: 50%;
-            max-width: 400px;
+            width: 60%;
+            max-width: 500px;
         }
 
-        .text-box {
-            max-width: 400px;
-            text-align: left;
-        }
+        /* RESPONSIVENESS */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            .nav {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .gif-container {
+                width: 90%;
+                max-width: 500px;
+                margin-top: 30px;
+            }
+            .powered-by {
+                font-size: 14px;
+            }
 
-        .disclaimer {
-            font-size: 12px;
-            color: gray;
-            margin-top: 20px;
-            text-align: center;
-            padding: 10px;
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
+            /* Move CA below buttons for mobile */
+            .contract-address {
+                position: static;
+                text-align: center;
+                margin-top: 10px;
+            }
 
+            /* Move social links below CA and center them */
+            .social-links {
+                position: static;
+                text-align: center;
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- BACKGROUND ANIMATION -->
     <canvas id="spaceCanvas"></canvas>
-    <div class="contract-address">CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</div>
+
+    <!-- CONTRACT ADDRESS -->
+    <div class="contract-address">
+        CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
+    </div>
+
+    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
     </div>
+
+    <!-- NAVIGATION -->
     <div class="nav">
         <a href="#">BUY $DGA</a>
-        <a href="#">DGAlienz NFTs (TBA)</a>
-        <a href="#">Degen Quests (TBA)</a>
+        <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
+        <a href="#">Degen Quests <span>(TBA)</span></a>
     </div>
+
+    <!-- MAIN CONTENT -->
     <div class="container">
         <h1>Degen Alien</h1>
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
     </div>
+
+    <!-- SCROLLING BANNER -->
     <div class="ticker-container">
-        <div class="ticker"><span>The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | </span></div>
+        <div class="ticker">
+            <span>
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+            </span>
+            <span>
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+                The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+            </span>
+        </div>
     </div>
+
+    <!-- NEW SCROLLABLE SECTION -->
     <div class="new-section">
-        <div class="text-box">$DGA Tokenomics:<br>🚀 Buy/Sell Tax: 0%<br>🔥 Fair Launch: Pump.Fun</div>
         <img src="assets/aliencoin.gif" class="alien-coin-gif" alt="Alien Coin GIF">
-        <div class="text-box">Degen Alien Roadmap:<br>🛸 First Degen Invasion</div>
     </div>
-    <p class="disclaimer">Degen Alien ($DGA) is a community-driven meme coin...</p>
+
 </body>
 </html>
