@@ -73,13 +73,24 @@
         }
 
         /* CONTRACT ADDRESS (BOTTOM LEFT) */
-        .contract-address {
+        .contract-container {
             position: absolute;
             bottom: 20px;
             left: 20px;
+            text-align: left;
+        }
+        .contract-container p {
             font-size: 14px;
             color: white;
             font-weight: bold;
+            margin: 0;
+        }
+        .contract-container .contract-text {
+            font-size: 14px;
+            color: white;
+            font-weight: normal;
+            cursor: text;
+            user-select: text;
         }
 
         /* TITLE */
@@ -151,7 +162,7 @@
                 right: 10px;
                 gap: 10px;
             }
-            .contract-address {
+            .contract-container {
                 bottom: 10px;
                 left: 10px;
                 font-size: 12px;
@@ -185,7 +196,10 @@
     </div>
 
     <!-- CONTRACT ADDRESS (BOTTOM LEFT) -->
-    <div class="contract-address">CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</div>
+    <div class="contract-container">
+        <p>Official Contract Address:</p>
+        <span class="contract-text">0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</span>
+    </div>
 
 </body>
 </html>
