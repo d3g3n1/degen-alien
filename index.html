@@ -148,16 +148,19 @@
             .powered-by {
                 font-size: 14px;
             }
-            .social-links {
-                top: 15px;
-                right: 10px;
-                gap: 10px;
-            }
 
-            /* Move CA under buttons for mobile */
+            /* Move CA below buttons for mobile */
             .contract-address {
                 position: static;
                 text-align: center;
+                margin-top: 10px;
+            }
+
+            /* Move social links below CA and center them */
+            .social-links {
+                position: static;
+                text-align: center;
+                justify-content: center;
                 margin-top: 10px;
             }
         }
@@ -168,7 +171,12 @@
     <!-- BACKGROUND ANIMATION -->
     <canvas id="spaceCanvas"></canvas>
 
-    <!-- SOCIAL LINKS (TOP RIGHT) -->
+    <!-- CONTRACT ADDRESS -->
+    <div class="contract-address">
+        CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
+    </div>
+
+    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
@@ -179,11 +187,6 @@
         <a href="#">BUY $DGA</a>
         <a href="#">DGAlienz NFTs <span>(TBA)</span></a>
         <a href="#">Degen Quests <span>(TBA)</span></a>
-    </div>
-
-    <!-- CONTRACT ADDRESS -->
-    <div class="contract-address">
-        CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
     <!-- MAIN CONTENT -->
