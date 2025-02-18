@@ -93,12 +93,8 @@
         }
 
         @keyframes glow {
-            from {
-                text-shadow: 0px 0px 15px #00ff00;
-            }
-            to {
-                text-shadow: 0px 0px 30px #00ff00;
-            }
+            from { text-shadow: 0px 0px 15px #00ff00; }
+            to { text-shadow: 0px 0px 30px #00ff00; }
         }
 
         /* MAIN CONTENT */
@@ -118,11 +114,10 @@
             margin-top: 50px;
         }
 
-        /* SCROLLING BANNER */
+        /* BANNER */
         .ticker-container {
             width: 100%;
             overflow: hidden;
-            white-space: nowrap;
             position: relative;
             background-color: black;
             border: 2px solid white;
@@ -133,8 +128,7 @@
 
         .ticker {
             display: flex;
-            width: 200%;
-            animation: tickerScroll 30s linear infinite alternate;
+            animation: tickerScroll 15s linear infinite alternate;
         }
 
         .ticker span {
@@ -142,78 +136,70 @@
             font-size: 1.8rem;
             color: white;
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-            display: flex;
-            min-width: 100%;
+            padding-right: 20px;
         }
 
         @keyframes tickerScroll {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
         }
 
-        /* NEW SECTION BELOW THE BANNER */
+        /* NEW SECTION */
         .new-section {
-            background-color: black;
-            padding: 50px 10%;
-            text-align: left;
-        }
-
-        .info-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
-            flex-wrap: wrap;
+            padding: 50px 10%;
         }
 
-        .info-container div {
-            width: 45%;
+        .alien-coin-gif {
+            width: 50%;
+            max-width: 400px;
+        }
+
+        .text-box {
+            max-width: 400px;
+            text-align: left;
         }
 
         .disclaimer {
             font-size: 12px;
             color: gray;
-            text-align: center;
             margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
+
     </style>
 </head>
 <body>
-
-    <!-- BACKGROUND ANIMATION -->
     <canvas id="spaceCanvas"></canvas>
-
-    <!-- SCROLLING BANNER -->
+    <div class="contract-address">CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4</div>
+    <div class="social-links">
+        <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
+        <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
+    </div>
+    <div class="nav">
+        <a href="#">BUY $DGA</a>
+        <a href="#">DGAlienz NFTs (TBA)</a>
+        <a href="#">Degen Quests (TBA)</a>
+    </div>
+    <div class="container">
+        <h1>Degen Alien</h1>
+        <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
+        <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
+    </div>
     <div class="ticker-container">
-        <div class="ticker">
-            <span> The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | </span>
-            <span> The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | </span>
-        </div>
+        <div class="ticker"><span>The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | </span></div>
     </div>
-
-    <!-- NEW SCROLLABLE SECTION -->
     <div class="new-section">
-        <div class="info-container">
-            <div>
-                <h2>$DGA Tokenomics:</h2>
-                🛸 Total Supply: 1,000,000,000 $DGA (1B)<br>
-                🚀 Buy/Sell Tax: 0% – Because Taxes Are for Normies<br>
-                👾 Team Allocation: 7% (For Marketing and Shenanigans)<br>
-                🔥 Fair Launch: Straight from the Galaxy to Pump.Fun<br>
-                💎 No Presale. No VC. No Mercy.<br>
-                💀 Just Pure Degen Chaos.
-            </div>
-            <div>
-                <h2>Degen Alien Roadmap:</h2>
-                Phase 1: The Alien Awakening<br>
-                🚀 Stealth Launch<br>
-                🛸 First Degen Invasion (Early Apes)<br>
-                🎨 Meme Creation & Viral Spreading<br>
-                🔥 $DGA on Trending Lists
-            </div>
-        </div>
-        <p class="disclaimer">Degen Alien ($DGA) is a community-driven meme coin...</p>
+        <div class="text-box">$DGA Tokenomics:<br>🚀 Buy/Sell Tax: 0%<br>🔥 Fair Launch: Pump.Fun</div>
+        <img src="assets/aliencoin.gif" class="alien-coin-gif" alt="Alien Coin GIF">
+        <div class="text-box">Degen Alien Roadmap:<br>🛸 First Degen Invasion</div>
     </div>
-
+    <p class="disclaimer">Degen Alien ($DGA) is a community-driven meme coin...</p>
 </body>
 </html>
