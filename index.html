@@ -18,7 +18,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         /* BACKGROUND ANIMATION */
@@ -107,9 +107,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh;
             position: relative;
             z-index: 2;
-            padding-bottom: 50px;
         }
 
         .gif-container {
@@ -164,20 +164,6 @@
             to {
                 transform: translateX(-50%);
             }
-        }
-
-        /* NEW SECTION BELOW THE BANNER */
-        .new-section {
-            background-color: black;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .alien-coin-gif {
-            width: 60%;
-            max-width: 500px;
         }
 
         /* RESPONSIVENESS */
@@ -258,11 +244,6 @@
                 The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
             </span>
         </div>
-    </div>
-
-    <!-- NEW SCROLLABLE SECTION -->
-    <div class="new-section">
-        <img src="assets/aliencoin.gif" class="alien-coin-gif" alt="Alien Coin GIF">
     </div>
 
 </body>
