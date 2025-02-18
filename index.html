@@ -120,6 +120,35 @@
             margin-top: 50px;
         }
 
+        /* TICKER BANNER */
+        .ticker-wrapper {
+            width: 100%;
+            overflow: hidden;
+            background-color: black;
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
+            padding: 10px 0;
+            white-space: nowrap;
+        }
+        .ticker {
+            display: inline-block;
+            font-family: 'SuperTheory', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            animation: scrollText 10s linear infinite;
+        }
+
+        @keyframes scrollText {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
         /* POWERED BY */
         .powered-by {
             margin-top: -5px;
@@ -209,6 +238,13 @@
         <h1>Degen Alien</h1>
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
+    </div>
+
+    <!-- SCROLLING TICKER BANNER -->
+    <div class="ticker-wrapper">
+        <div class="ticker">
+            The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA | The Ticker is $DGA |
+        </div>
     </div>
 
     <!-- SCROLL-DOWN SECTION -->
