@@ -18,7 +18,8 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* BACKGROUND ANIMATION */
@@ -29,6 +30,37 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+        }
+
+        /* CONTRACT ADDRESS */
+        .contract-address {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            user-select: text;
+            cursor: text;
+        }
+
+        /* SOCIAL LINKS */
+        .social-links {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .social-links a img {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .social-links a img:hover {
+            transform: scale(1.1);
         }
 
         /* NAVIGATION */
@@ -51,37 +83,6 @@
         .nav a:hover {
             color: #00ff00;
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-        }
-
-        /* SOCIAL LINKS */
-        .social-links {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .social-links a img {
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-        .social-links a img:hover {
-            transform: scale(1.1);
-        }
-
-        /* CONTRACT ADDRESS */
-        .contract-address {
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            user-select: text;
-            cursor: text;
         }
 
         /* TITLE */
@@ -130,6 +131,20 @@
             vertical-align: middle;
         }
 
+        /* NEW SECTION AFTER SCROLL */
+        .next-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .coin-gif {
+            width: 300px;
+            max-width: 90%;
+        }
+
         /* RESPONSIVENESS */
         @media screen and (max-width: 768px) {
             h1 {
@@ -176,7 +191,7 @@
         CA: 0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4
     </div>
 
-    <!-- SOCIAL LINKS (MOVES BELOW CA ON MOBILE) -->
+    <!-- SOCIAL LINKS -->
     <div class="social-links">
         <a href="https://t.me/DegenAliens" target="_blank"><img src="assets/telegram-logo.png" alt="Telegram"></a>
         <a href="https://x.com/DegenAlienOnSol" target="_blank"><img src="assets/twitter-x-logo.png" alt="Twitter X"></a>
@@ -194,6 +209,11 @@
         <h1>Degen Alien</h1>
         <p class="powered-by">Powered by <img src="assets/solana-logo.png" alt="Solana Logo"></p>
         <img src="assets/degen.gif" class="gif-container" alt="Degen Alien GIF">
+    </div>
+
+    <!-- SCROLL-DOWN SECTION -->
+    <div class="next-section">
+        <img src="assets/aliencoin.gif" class="coin-gif" alt="Alien Coin GIF">
     </div>
 
 </body>
